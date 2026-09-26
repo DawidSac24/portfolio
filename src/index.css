@@ -1,0 +1,16 @@
+/* src/index.css */
+:root {
+  background-color: #09090b;
+  color: #fafafa;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+}

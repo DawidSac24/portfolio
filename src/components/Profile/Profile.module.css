@@ -1,0 +1,34 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: -0.05em;
+}
+
+.bio {
+  color: #a1a1aa;
+  line-height: 1.6;
+  font-size: 1.125rem;
+}
+
+.techStack {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  background: #27272a;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
