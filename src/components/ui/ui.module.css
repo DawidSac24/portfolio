@@ -1,0 +1,32 @@
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--tui-accent);
+  font-size: 0.85rem;
+}
+
+/* Section Styles */
+.section {
+  border: 1px solid var(--tui-border);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.sectionTitle {
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  background: var(--tui-bg);
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--tui-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sectionContent {
+  color: var(--tui-text);
+}

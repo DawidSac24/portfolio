@@ -1,8 +1,11 @@
-/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 :root {
-  background-color: #09090b;
-  color: #fafafa;
-  font-family: system-ui, -apple-system, sans-serif;
+  --tui-bg: #050505;
+  --tui-text: #d4d4d8;
+  --tui-muted: #52525b;
+  --tui-accent: #4eca11; /* Amber */
+  --tui-border: #3f3f46;
 }
 
 * {
@@ -12,5 +15,10 @@
 }
 
 body {
+  background-color: var(--tui-bg);
+  color: var(--tui-text);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  -webkit-font-smoothing: none; /* Disables anti-aliasing for a crisper, pixelated look */
   min-height: 100vh;
+  line-height: 1.5;
 }

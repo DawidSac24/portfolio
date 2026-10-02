@@ -1,0 +1,9 @@
+.pageLayout {
+  display: flex;
+}
+
+.mainContent {
+  margin-left: 150px;
+  max-width: 800px;
+  width: 100%;
+}

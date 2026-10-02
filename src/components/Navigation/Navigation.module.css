@@ -1,0 +1,78 @@
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--tui-bg);
+  border-bottom: 1px dashed var(--tui-border); /* Dashed lines feel more terminal-like */
+}
+
+.headerLogo { 
+  font-weight: bold; 
+  color: var(--tui-accent);
+}
+
+/* Header Tabs */
+.tabsList { 
+  display: flex; 
+  gap: 1.5rem; 
+  align-items: center;
+}
+
+.tabTrigger {
+  all: unset;
+  color: var(--tui-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.1s;
+}
+
+.tabTrigger:hover { color: var(--tui-text); }
+.active { color: var(--tui-accent) !important; }
+
+.separator {
+  color: var(--tui-border);
+  user-select: none;
+}
+
+/* SideNav */
+.sideNav {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+}
+
+.navList { 
+  list-style: none; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--tui-muted);
+}
+
+.navLink::before {
+  content: "[ ]";
+  margin-right: 0.75rem;
+  color: var(--tui-border);
+}
+
+.navLink:hover {
+  color: var(--tui-text);
+}
+
+.navLink:hover::before {
+  content: "[~]";
+  color: var(--tui-accent);
+}
