@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 :root {
   --tui-bg: #050505;
   --tui-text: #d4d4d8;
   --tui-muted: #52525b;
-  --tui-accent: #4eca11; /* Amber */
+  --tui-accent: #f59e0b; /* Amber */
   --tui-border: #3f3f46;
 }
 
@@ -17,8 +17,14 @@
 body {
   background-color: var(--tui-bg);
   color: var(--tui-text);
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
   -webkit-font-smoothing: none; /* Disables anti-aliasing for a crisper, pixelated look */
   min-height: 100vh;
   line-height: 1.5;
+}
+
+a {
+  color: var(--tui-accent);
 }

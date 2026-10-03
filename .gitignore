@@ -24,4 +24,8 @@ dist-ssr
 *.sw?
 
 .env
-.env.development
+.env.developement
+
+# rust and wasm related
+pkg
+target
