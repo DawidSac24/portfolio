@@ -21,8 +21,4 @@ export class OutlineDecorator extends ExhibitDecorator {
       }
     });
   }
-
-  public getMesh(): THREE.Object3D {
-    return this.wrappedModel.getMesh();
-  }
 }

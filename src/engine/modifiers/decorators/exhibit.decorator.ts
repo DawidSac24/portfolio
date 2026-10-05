@@ -9,15 +9,15 @@ export abstract class ExhibitDecorator extends Exhibit {
     this.wrappedModel = model;
   }
 
-  public getMesh(): THREE.Object3D {
+  public override getMesh(): THREE.Object3D {
     return this.wrappedModel.getMesh();
   }
 
-  public update(deltaTime: number): void {
+  public override update(deltaTime: number): void {
     this.wrappedModel.update(deltaTime);
   }
 
-  protected onDispose(): void {
+  public override dispose(): void {
     this.wrappedModel.dispose();
   }
 }

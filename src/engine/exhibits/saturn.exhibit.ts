@@ -39,16 +39,16 @@ export class SaturnModel extends Exhibit {
     this.group.add(ringLight);
   }
 
-  public getMesh(): THREE.Object3D {
+  public override getMesh(): THREE.Object3D {
     return this.group;
   }
 
-  public update(deltaTime: number): void {
+  public override update(deltaTime: number): void {
     // A slow, smooth spin on the vertical axis (0.1 radians per second)
     this.group.rotation.y += deltaTime * 0.25;
   }
 
-  protected onDispose(): void {
+  public override dispose(): void {
     this.group.traverse((child) => {
       // 2. Check if it's a mesh with geometry and materials
       if ((child as THREE.Mesh).isMesh) {
