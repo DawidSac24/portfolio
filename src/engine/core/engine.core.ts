@@ -1,39 +1,15 @@
 import * as THREE from "three";
-import { STLLoader } from "three/addons/loaders/STLLoader.js";
-import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
-import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import type { Exhibit } from "../exhibits/exhibit";
-import { AssetManager } from "./assets.manager";
-import { TextureLoader } from "three";
-
-interface ExtLoader {
-  ext: string;
-  loader: THREE.Loader;
-}
-
-const defaultLoaders: ExtLoader[] = [
-  { ext: "stl", loader: new STLLoader() },
-  { ext: "fbx", loader: new FBXLoader() },
-  { ext: "obj", loader: new OBJLoader() },
-  { ext: "glb", loader: new GLTFLoader() },
-  { ext: "gltf", loader: new GLTFLoader() },
-  { ext: "jpg", loader: new TextureLoader() },
-  { ext: "png", loader: new TextureLoader() },
-];
+import { LRUCache } from "./caches/lru.cache";
+import type { Scene } from "../scenes/scene";
 
 export class EngineCore {
   private static instance: EngineCore | null = null;
 
   private renderer: THREE.WebGLRenderer;
-  private scene: THREE.Scene;
-  private camera: THREE.PerspectiveCamera;
   private lastTime: number = 0;
 
-  private directionalLight: THREE.DirectionalLight;
-  private ambientLight: THREE.AmbientLight;
-
-  private activeExhibit: Exhibit | null = null;
+  private sceneCache: LRUCache<Scene>;
+  private activeScene: Scene | null = null;
 
   public static getInstance(): EngineCore {
     if (this.instance === null) {
@@ -45,30 +21,9 @@ export class EngineCore {
   private constructor() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-    this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x050505);
-
-    this.camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
-    this.camera.position.z = 5;
-
-    // Create a directional light (color, intensity)
-    this.directionalLight = new THREE.DirectionalLight(0xffffff, 2.0);
-
-    // By default, it shines from directly above (0, 1, 0)
-    // Move it back and up slightly so it hits the front of your models
-    this.directionalLight.position.set(5, 10, 5);
-    this.scene.add(this.directionalLight);
-
-    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
-    this.scene.add(this.ambientLight);
-
-    defaultLoaders.forEach(({ ext, loader }) => {
-      AssetManager.getInstance().registerLoader(ext, loader);
+    this.sceneCache = new LRUCache(3, (key, scene) => {
+      console.log(`disposing of scene: ${key}`);
+      scene.dispose();
     });
 
     window.addEventListener("resize", this.onWindowResize);
@@ -82,9 +37,30 @@ export class EngineCore {
   }
 
   public destroy(): void {
-    this.activeExhibit?.dispose();
+    this.sceneCache.clear();
     this.renderer.dispose();
-    this.scene.clear();
+  }
+
+  public async switchScene(
+    sceneId: string,
+    buildFn: () => Promise<Scene>,
+  ): Promise<void> {
+    this.dropActiveScene();
+
+    let nextScene = this.sceneCache.get(sceneId);
+
+    if (!nextScene) {
+      nextScene = await buildFn();
+      this.sceneCache.set(sceneId, nextScene);
+    }
+
+    this.activeScene = nextScene;
+    this.activeScene.enter();
+  }
+
+  public dropActiveScene(): void {
+    this.activeScene?.exit();
+    this.activeScene = null;
   }
 
   private loop = (time: number): void => {
@@ -94,34 +70,24 @@ export class EngineCore {
     const deltaTime = this.lastTime ? timeInSeconds - this.lastTime : 0;
     this.lastTime = timeInSeconds;
 
-    this.activeExhibit?.update(deltaTime);
-    this.renderer.render(this.scene, this.camera);
+    if (this.activeScene) {
+      this.activeScene.update(deltaTime);
+      this.renderer.render(this.activeScene.handle, this.activeScene.camera);
+    } else {
+      this.renderer.clear();
+    }
   };
-
-  public setExhibit(newExhibit: Exhibit | null): void {
-    if (this.activeExhibit) {
-      this.scene.remove(this.activeExhibit.getMesh());
-      this.activeExhibit.dispose();
-    }
-
-    this.activeExhibit = newExhibit;
-
-    if (this.activeExhibit) {
-      this.scene.add(this.activeExhibit.getMesh());
-    }
-  }
-
-  public setDefaultLights(enabled: boolean): void {
-    this.directionalLight.visible = enabled;
-    this.ambientLight.visible = enabled;
-  }
 
   private onWindowResize = (): void => {
     const parent = this.renderer.domElement.parentElement;
     if (parent) {
-      this.camera.aspect = parent.clientWidth / parent.clientHeight;
-      this.camera.updateProjectionMatrix();
       this.renderer.setSize(parent.clientWidth, parent.clientHeight);
+
+      if (this.activeScene) {
+        this.activeScene.camera.aspect =
+          parent.clientWidth / parent.clientHeight;
+        this.activeScene.camera.updateProjectionMatrix();
+      }
     }
   };
 }

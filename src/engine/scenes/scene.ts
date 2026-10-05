@@ -2,14 +2,14 @@ import * as THREE from "three";
 import { Exhibit } from "../exhibits/exhibit";
 
 export abstract class Scene {
-  public scene: THREE.Scene;
+  public handle: THREE.Scene;
   public camera: THREE.PerspectiveCamera;
 
   protected exhibits: Exhibit[] = [];
   protected subs: (() => void)[] = []; // EventBus unsubscribe tokens
 
   constructor() {
-    this.scene = new THREE.Scene();
+    this.handle = new THREE.Scene();
 
     // Every scene gets its own camera so it can control it independently
     this.camera = new THREE.PerspectiveCamera(
@@ -20,9 +20,12 @@ export abstract class Scene {
     );
   }
 
+  public enter() {}
+  public exit() {}
+
   public addExhibit(exhibit: Exhibit): void {
     this.exhibits.push(exhibit);
-    this.scene.add(exhibit.getMesh());
+    this.handle.add(exhibit.getMesh());
   }
 
   public update(deltaTime: number): void {
@@ -34,7 +37,7 @@ export abstract class Scene {
   public dispose(): void {
     this.subs.forEach((unsub) => unsub()); // Clear event listeners
     this.exhibits.forEach((exhibit) => exhibit.dispose()); // Destroy models
-    this.scene.clear();
+    this.handle.clear();
     this.onDispose();
   }
 
