@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { EngineCore } from "../../engine/core/engine.core";
-import { SaturnFactory } from "../../engine/factories/saturn.factory";
+// import { SaturnFactory } from "../../engine/exhibits/factories/saturn.factory";
+import { CubeFactory } from "../../engine/exhibits/factories/cube.factory";
 // Import your factories and singletons
 
 const engine = EngineCore.getInstance();
@@ -9,7 +10,7 @@ export default function SandboxPage() {
   useEffect(() => {
     let isMounted = true; // Track if the user is still on this page
 
-    new SaturnFactory().build().then((exhibit) => {
+    new CubeFactory().build().then((exhibit) => {
       // Only set the exhibit if the user hasn't navigated away
       if (isMounted) {
         engine.setExhibit(exhibit);
@@ -19,7 +20,7 @@ export default function SandboxPage() {
       }
     });
 
-    engine.setDefaultLights(false);
+    engine.setDefaultLights(true);
 
     return () => {
       isMounted = false;

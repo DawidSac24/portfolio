@@ -1,9 +1,9 @@
-import type { ExhibitModel } from "../../models/exhibit.model";
+import type { Exhibit } from "../../exhibits/exhibit";
 import { ExhibitDecorator } from "./exhibit.decorator";
 import * as THREE from "three";
 
 export class OutlineDecorator extends ExhibitDecorator {
-  constructor(model: ExhibitModel) {
+  constructor(model: Exhibit) {
     super(model);
 
     const lineMaterial = new THREE.LineBasicMaterial({

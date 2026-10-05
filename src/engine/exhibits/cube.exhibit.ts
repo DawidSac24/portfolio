@@ -1,13 +1,13 @@
 import * as THREE from "three";
-import { ExhibitModel } from "./exhibit.model";
+import { Exhibit } from "./exhibit";
 
-export class CubeModel extends ExhibitModel {
+export class CubeModel extends Exhibit {
   private mesh: THREE.Mesh;
 
   public constructor() {
     super();
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
+    const material = new THREE.MeshStandardMaterial({ color: 0xf59e0b });
     this.mesh = new THREE.Mesh(geometry, material);
   }
 

@@ -2,7 +2,7 @@ import type BaseEvent from "../events/base.event";
 import { EventBus } from "../events/event.bus";
 import * as THREE from "three";
 
-export abstract class ExhibitModel {
+export abstract class Exhibit {
   private eventBus = EventBus.getInstance();
   private subs: Array<() => void> = [];
 

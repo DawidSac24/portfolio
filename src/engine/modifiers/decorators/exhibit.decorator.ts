@@ -1,10 +1,10 @@
-import { ExhibitModel } from "../../models/exhibit.model";
+import { Exhibit } from "../../exhibits/exhibit";
 import * as THREE from "three";
 
-export abstract class ExhibitDecorator extends ExhibitModel {
-  protected wrappedModel: ExhibitModel;
+export abstract class ExhibitDecorator extends Exhibit {
+  protected wrappedModel: Exhibit;
 
-  constructor(model: ExhibitModel) {
+  constructor(model: Exhibit) {
     super();
     this.wrappedModel = model;
   }

@@ -2,7 +2,8 @@ import * as THREE from "three";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
 import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
-import type { ExhibitModel } from "../models/exhibit.model";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import type { Exhibit } from "../exhibits/exhibit";
 import { AssetManager } from "./assets.manager";
 import { TextureLoader } from "three";
 
@@ -15,6 +16,8 @@ const defaultLoaders: ExtLoader[] = [
   { ext: "stl", loader: new STLLoader() },
   { ext: "fbx", loader: new FBXLoader() },
   { ext: "obj", loader: new OBJLoader() },
+  { ext: "glb", loader: new GLTFLoader() },
+  { ext: "gltf", loader: new GLTFLoader() },
   { ext: "jpg", loader: new TextureLoader() },
   { ext: "png", loader: new TextureLoader() },
 ];
@@ -30,7 +33,7 @@ export class EngineCore {
   private directionalLight: THREE.DirectionalLight;
   private ambientLight: THREE.AmbientLight;
 
-  private activeExhibit: ExhibitModel | null = null;
+  private activeExhibit: Exhibit | null = null;
 
   public static getInstance(): EngineCore {
     if (this.instance === null) {
@@ -95,7 +98,7 @@ export class EngineCore {
     this.renderer.render(this.scene, this.camera);
   };
 
-  public setExhibit(newExhibit: ExhibitModel | null): void {
+  public setExhibit(newExhibit: Exhibit | null): void {
     if (this.activeExhibit) {
       this.scene.remove(this.activeExhibit.getMesh());
       this.activeExhibit.dispose();

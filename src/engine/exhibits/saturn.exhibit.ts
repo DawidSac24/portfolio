@@ -1,7 +1,7 @@
-import { ExhibitModel } from "./exhibit.model";
+import { Exhibit } from "./exhibit";
 import * as THREE from "three";
 
-export class SaturnModel extends ExhibitModel {
+export class SaturnModel extends Exhibit {
   private group: THREE.Group;
 
   public constructor(saturnMesh: THREE.Object3D) {
@@ -33,6 +33,9 @@ export class SaturnModel extends ExhibitModel {
     ringLight.position.set(10, 10, 5);
     ringLight.target = saturnMesh;
 
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2); // Soft white light
+    this.group.add(ambientLight);
+
     this.group.add(ringLight);
   }
 
@@ -41,9 +44,8 @@ export class SaturnModel extends ExhibitModel {
   }
 
   public update(deltaTime: number): void {
-    // Spin the group to see if the "line" reveals itself as the rings
-    this.group.rotation.y += deltaTime * 0.5;
-    this.group.rotation.x += deltaTime * 0.2;
+    // A slow, smooth spin on the vertical axis (0.1 radians per second)
+    this.group.rotation.y += deltaTime * 0.25;
   }
 
   protected onDispose(): void {
