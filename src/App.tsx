@@ -41,6 +41,7 @@ function App() {
           width: "100vw",
           height: "100vh",
           zIndex: -1,
+          backgroundColor: "#050505",
         }}
       />
 

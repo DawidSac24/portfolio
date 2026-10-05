@@ -6,22 +6,18 @@ export abstract class Scene {
   public camera: THREE.PerspectiveCamera;
 
   protected exhibits: Exhibit[] = [];
-  protected subs: (() => void)[] = []; // EventBus unsubscribe tokens
 
   constructor() {
     this.handle = new THREE.Scene();
 
-    // Every scene gets its own camera so it can control it independently
     this.camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
       1000,
     );
+    this.camera.position.z = 5;
   }
-
-  public enter() {}
-  public exit() {}
 
   public addExhibit(exhibit: Exhibit): void {
     this.exhibits.push(exhibit);
@@ -29,18 +25,19 @@ export abstract class Scene {
   }
 
   public update(deltaTime: number): void {
-    this.exhibits.forEach((exhibit) => exhibit.update(deltaTime));
-
     this.onUpdate(deltaTime);
+    this.exhibits.forEach((exhibit) => exhibit.update(deltaTime));
   }
 
   public dispose(): void {
-    this.subs.forEach((unsub) => unsub()); // Clear event listeners
-    this.exhibits.forEach((exhibit) => exhibit.dispose()); // Destroy models
-    this.handle.clear();
     this.onDispose();
+    this.exhibits.forEach((exhibit) => exhibit.dispose());
+    this.handle.clear();
   }
 
+  public abstract load(): Promise<void>;
+  public abstract enter(): void;
+  public abstract exit(): void;
   protected abstract onUpdate(deltaTime: number): void;
   protected abstract onDispose(): void;
 }

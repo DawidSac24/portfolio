@@ -4,8 +4,8 @@ import * as THREE from "three";
 export class SaturnModel extends Exhibit {
   private group: THREE.Group;
 
-  public constructor(saturnMesh: THREE.Object3D) {
-    super();
+  public constructor(sourceUrl: string, saturnMesh: THREE.Object3D) {
+    super(sourceUrl, saturnMesh);
     this.group = new THREE.Group();
 
     // 1. Calculate the current size of the wild internet model
@@ -44,11 +44,10 @@ export class SaturnModel extends Exhibit {
   }
 
   public override update(deltaTime: number): void {
-    // A slow, smooth spin on the vertical axis (0.1 radians per second)
     this.group.rotation.y += deltaTime * 0.25;
   }
 
-  public override dispose(): void {
+  protected override onDispose(): void {
     this.group.traverse((child) => {
       // 2. Check if it's a mesh with geometry and materials
       if ((child as THREE.Mesh).isMesh) {
