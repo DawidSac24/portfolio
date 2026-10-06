@@ -5,84 +5,55 @@ import type { Exhibit } from "../../exhibits/exhibit";
 
 export class InteractiveAsciiDecorator extends ExhibitDecorator {
   private raycaster = new THREE.Raycaster();
-  private mouse = new THREE.Vector2(-1, -1); // Default off-screen
-  private shaderMat: THREE.ShaderMaterial | null = null;
-  private isClicked = false;
+  private mouse = new THREE.Vector2(-1, -1);
+  private targetMaterials: THREE.Material[] = [];
+  private camera: THREE.PerspectiveCamera;
 
-  constructor(
-    wrappedExhibit: Exhibit,
-    private camera: THREE.PerspectiveCamera,
-  ) {
+  constructor(wrappedExhibit: Exhibit, camera: THREE.PerspectiveCamera) {
     super(wrappedExhibit);
+    this.camera = camera;
 
-    // 1. Find the shader material applied by the previous decorator
+    // Find all materials that have our custom uMouseUv injected
     this.getMesh().traverse((child) => {
       const mesh = child as THREE.Mesh;
-      if (mesh.material && (mesh.material as THREE.ShaderMaterial).uniforms) {
-        this.shaderMat = mesh.material as THREE.ShaderMaterial;
+      if (mesh.isMesh && mesh.material) {
+        if ((mesh.material as THREE.Material).userData.uMouseUv) {
+          this.targetMaterials.push(mesh.material as THREE.Material);
+        }
       }
     });
 
-    // 2. Setup standard DOM Event Listeners
     window.addEventListener("pointermove", this.onPointerMove);
-    window.addEventListener("click", this.onClick);
   }
 
   private onPointerMove = (event: PointerEvent) => {
-    // Convert mouse position to normalized device coordinates (-1 to +1)
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   };
 
-  private onClick = () => {
-    // Toggle the effect on/off
-    this.isClicked = !this.isClicked;
-  };
-
   public override update(deltaTime: number): void {
-    super.update(deltaTime); // Let Saturn spin!
+    super.update(deltaTime);
 
-    if (!this.shaderMat) return;
+    if (this.targetMaterials.length === 0) return;
 
-    // 1. Raycast every frame to see if the mouse is touching THIS model
     this.raycaster.setFromCamera(this.mouse, this.camera);
     const intersects = this.raycaster.intersectObject(this.getMesh(), true);
 
-    if (intersects.length > 0) {
-      // The mouse is hovering! Pass the UV coordinate to the shader
-      const uv = intersects[0].uv;
-      if (uv) {
-        this.shaderMat.uniforms.u_mouse_uv.value = uv;
-        // Smoothly increase scramble
-        this.shaderMat.uniforms.u_scramble.value = THREE.MathUtils.lerp(
-          this.shaderMat.uniforms.u_scramble.value,
-          1.0,
-          0.1,
-        );
-      }
-    } else {
-      // Mouse left the model. Move the UV off-screen and dial down scramble
-      this.shaderMat.uniforms.u_mouse_uv.value.set(-1, -1);
-      this.shaderMat.uniforms.u_scramble.value = THREE.MathUtils.lerp(
-        this.shaderMat.uniforms.u_scramble.value,
-        0.0,
-        0.1,
-      );
+    let targetUv = new THREE.Vector2(-1, -1); // Off-screen by default
+
+    if (intersects.length > 0 && intersects[0].uv) {
+      targetUv = intersects[0].uv;
     }
 
-    // 2. Handle the click fade out
-    const targetOpacity = this.isClicked ? 0.0 : 1.0;
-    this.shaderMat.uniforms.u_opacity.value = THREE.MathUtils.lerp(
-      this.shaderMat.uniforms.u_opacity.value,
-      targetOpacity,
-      0.05,
-    );
+    // Pass the UV to all sub-materials
+    for (const mat of this.targetMaterials) {
+      // Use lerp for a smooth trailing/easing effect as the mouse moves
+      mat.userData.uMouseUv.value.lerp(targetUv, 0.2);
+    }
   }
 
-  public override dispose(): void {
-    // CRITICAL: Clean up window event listeners so they don't leak memory when switching pages!
+  protected override onDispose(): void {
     window.removeEventListener("pointermove", this.onPointerMove);
-    window.removeEventListener("click", this.onClick);
     super.dispose();
   }
 }

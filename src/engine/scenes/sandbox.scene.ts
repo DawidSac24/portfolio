@@ -20,7 +20,13 @@ export class SandboxScene extends Scene {
     );
 
     saturnBuilder
-      .withDecorator(AsciiShaderDecorator)
+      .withDecorator(AsciiShaderDecorator, {
+        darkColor: "#1c1b1b",
+        lightColor: "#e3e3e3",
+        hoverColor: "#f59e0b", // Pure white glow on hover
+        hoverRadius: 0.15, // Controls how wide the glow spreads
+        charSize: 8.0,
+      })
       .withDecorator(InteractiveAsciiDecorator, this.camera);
 
     const saturn = await saturnBuilder.build();

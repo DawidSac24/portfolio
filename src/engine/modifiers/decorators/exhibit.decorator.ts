@@ -5,7 +5,7 @@ export abstract class ExhibitDecorator extends Exhibit {
   protected wrappedModel: Exhibit;
 
   constructor(model: Exhibit) {
-    super();
+    super(model.getSourceUrl(), model.getMesh());
     this.wrappedModel = model;
   }
 

@@ -14,6 +14,10 @@ export abstract class Exhibit {
     return this.mesh;
   }
 
+  public getSourceUrl(): string {
+    return this.sourceUrl;
+  }
+
   public dispose(): void {
     this.onDispose();
     AssetManager.getInstance().release(this.sourceUrl);
