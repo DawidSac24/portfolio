@@ -34,7 +34,6 @@ export class SandboxScene extends Scene {
   }
 
   public override enter(): void {}
-  z;
   public override exit(): void {}
   protected override onUpdate(_deltaTime: number): void {}
   protected override onDispose(): void {}
