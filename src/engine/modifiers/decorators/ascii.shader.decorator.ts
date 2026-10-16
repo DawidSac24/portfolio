@@ -15,6 +15,8 @@ export interface AsciiOptions {
   hoverRadius?: number;
 }
 
+// TODO: The shader CUTS the charachters - instead of adapting to the actual 3d model
+
 export class AsciiShaderDecorator extends ExhibitDecorator {
   private targetMaterials: THREE.Material[] = [];
 

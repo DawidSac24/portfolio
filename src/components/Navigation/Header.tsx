@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>Dawid Sac</div>
-
+      <div className={styles.headerLogo}>[Work in progress...]</div>
       <nav className={styles.tabsList}>
         <NavLink
           to="/"
@@ -21,7 +21,7 @@ export const Header = () => {
 
         <span className={styles.separator}>my main projects |</span>
 
-        <NavLink
+        {/* <NavLink
           to="/sandbox"
           end
           className={({ isActive }) =>
@@ -31,7 +31,7 @@ export const Header = () => {
           }
         >
           Sandbox
-        </NavLink>
+        </NavLink> */}
 
         <NavLink
           to="/smartframe"
@@ -63,18 +63,7 @@ export const Header = () => {
               : styles.tabTrigger
           }
         >
-          Automate v2
-        </NavLink>
-
-        <NavLink
-          to="/engine"
-          className={({ isActive }) =>
-            isActive
-              ? `${styles.tabTrigger} ${styles.active}`
-              : styles.tabTrigger
-          }
-        >
-          3D Engine
+          Automate
         </NavLink>
       </nav>
     </header>

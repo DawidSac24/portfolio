@@ -15,7 +15,7 @@ export class SaturnModel extends Exhibit {
 
     // 2. Mathematically force it to be exactly 4 units wide
     // (Since your camera is at Z=5, a 4-unit object fits perfectly on screen)
-    const desiredSize = 4;
+    const desiredSize = 6;
     const scaleFactor = desiredSize / maxDimension;
     saturnMesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
 

@@ -5,22 +5,17 @@ import { Header } from "./components/Navigation/Header";
 import { Profile } from "./pages/Profile/Profile";
 import { SmartframePage } from "./pages/SmartFrame/SmartFramePage";
 import SandboxPage from "./pages/Sandbox/SandboxPage";
-
-// Make sure to import your EngineCore
 import { EngineCore } from "./engine/core/engine.core";
 
 function App() {
-  // 1. Create a reference for the global canvas container
   const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!canvasContainerRef.current) return;
 
-    // 2. Instantiate and mount the engine once
     const engine = EngineCore.getInstance();
     engine.mount(canvasContainerRef.current);
 
-    // 3. Teardown if the entire app unmounts
     return () => {
       engine.destroy();
     };
@@ -28,10 +23,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* 
-        THE STAGE: Fixed in the background. 
-        It spans the whole screen but sits behind the UI.
-      */}
       <div
         ref={canvasContainerRef}
         style={{
@@ -45,11 +36,6 @@ function App() {
         }}
       />
 
-      {/* 
-        THE UI: Your standard React layout.
-        Make sure your global CSS (index.css) does not put a solid 
-        background color on the <body> tag, or it will hide the 3D canvas!
-      */}
       <div style={{ position: "relative", zIndex: 1 }}>
         <Header />
 
@@ -57,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Profile />} />
             <Route path="/smartframe" element={<SmartframePage />} />
-            <Route path="/sandbox" element={<SandboxPage />} />
+            {/* <Route path="/sandbox" element={<SandboxPage />} /> */}
 
             <Route
               path="/mbplayer"
@@ -83,21 +69,7 @@ function App() {
                     marginLeft: "150px",
                   }}
                 >
-                  Automate v2 coming soon...
-                </div>
-              }
-            />
-            <Route
-              path="/engine"
-              element={
-                <div
-                  style={{
-                    color: "#a1a1aa",
-                    padding: "4rem",
-                    marginLeft: "150px",
-                  }}
-                >
-                  3D Engine coming soon...
+                  Automate coming soon...
                 </div>
               }
             />
