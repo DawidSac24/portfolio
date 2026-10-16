@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Navigation/Header";
 import { Profile } from "./pages/Profile/Profile";
 import { SmartframePage } from "./pages/SmartFrame/SmartFramePage";
-import SandboxPage from "./pages/Sandbox/SandboxPage";
+// import SandboxPage from "./pages/Sandbox/SandboxPage";
 import { EngineCore } from "./engine/core/engine.core";
 
 function App() {

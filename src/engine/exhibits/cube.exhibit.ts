@@ -2,13 +2,13 @@ import * as THREE from "three";
 import { Exhibit } from "./exhibit";
 
 export class CubeModel extends Exhibit {
-  private mesh: THREE.Mesh;
-
   public constructor(sourceUrl: string) {
-    super(sourceUrl);
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshStandardMaterial({ color: 0xf59e0b });
-    this.mesh = new THREE.Mesh(geometry, material);
+    const mesh = new THREE.Mesh(geometry, material);
+
+    super(sourceUrl, mesh);
+    this.mesh = mesh;
   }
 
   public override getMesh(): THREE.Object3D {
@@ -25,6 +25,6 @@ export class CubeModel extends Exhibit {
   protected override onDispose(): void {
     // Implement any cleanup logic specific to the Cube exhibit model
     // For example, you might want to unsubscribe from events or release resources
-    this.mesh.geometry.dispose();
+    this.mesh.dispose();
   }
 }
