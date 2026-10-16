@@ -24,3 +24,47 @@
   gap: 1rem;
   margin-top: 1rem;
 }
+
+.resumeItem {
+  margin-bottom: 1.5rem;
+}
+
+.resumeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.resumeTitle {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.resumeDate {
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  white-space: nowrap;
+}
+
+.resumeSubtitle {
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.resumeLocation {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #a1a1aa;
+}
+
+.resumeDetails {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #d4d4d8;
+}
+
+.resumeDetails ul {
+  padding-left: 1.2rem;
+  margin-top: 0.25rem;
+}
