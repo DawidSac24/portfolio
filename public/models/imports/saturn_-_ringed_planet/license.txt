@@ -1,0 +1,11 @@
+Model Information:
+* title:	Saturn - Ringed Planet
+* source:	https://sketchfab.com/3d-models/saturn-ringed-planet-09b253b67eac4e09b3112a0a79464f55
+* author:	AstroRiah (https://sketchfab.com/AstroRiah)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Saturn - Ringed Planet" (https://sketchfab.com/3d-models/saturn-ringed-planet-09b253b67eac4e09b3112a0a79464f55) by AstroRiah (https://sketchfab.com/AstroRiah) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
