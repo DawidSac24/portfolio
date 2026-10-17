@@ -25,22 +25,7 @@ export const SmartframePage = () => {
           } as React.CSSProperties
         }
       >
-        <div>
-          <h2 className={styles.sectionHeading}>+-- About Me --+</h2>
-          <p className={styles.bioText} style={{ margin: 0 }}>
-            Hi! My name is Dawid and I am a computer science student. I am
-            passionate about informatics and electronics, and my goal is to
-            bridge the gap between both worlds by pursuing a career in Embedded
-            Systems and Firmware Engineering.
-          </p>
-          <p className={styles.bioText} style={{ margin: 0 }}>
-            To build a strong hardware foundation, I studied electronics in
-            technical school before transitioning into software by enrolling in
-            college for computer science. I continuously push myself through
-            complex personal projects, constantly exploring new technologies and
-            using my mistakes as stepping stones to improve.
-          </p>
-        </div>
+        <div></div>
         {/* 
         <div className={styles.viewportWrapper}>
           <Viewport3D

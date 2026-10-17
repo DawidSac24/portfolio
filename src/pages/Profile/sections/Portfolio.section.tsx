@@ -1,9 +1,9 @@
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
 import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
-import styles from "../Profile.module.css";
 import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
 import { Scene } from "../../../engine/scenes/scene";
 import { SaturnModel } from "../../../engine/exhibits/saturn.exhibit";
+import styles from "../../layout/PageLayout.module.css";
 
 function PortfolioSection() {
   return (

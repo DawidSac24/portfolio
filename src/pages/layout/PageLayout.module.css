@@ -1,5 +1,4 @@
-/* /src/pages/Profile/Profile.module.css */
-.pageLayout {
+pageLayout {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -21,16 +20,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 6rem;
+  padding: 4rem 3rem;
   box-sizing: border-box;
 }
 
 .sectionGrid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
+  grid-template-columns: var(--col-text, 1fr) var(--col-view, 1fr);
+  gap: var(--grid-gap, 4rem);
   align-items: center;
-  max-width: 1200px;
+  max-width: var(--max-w, 1200px);
   width: 100%;
 }
 
@@ -51,7 +50,7 @@
 .sectionHeading {
   font-family: monospace;
   font-size: 1.5rem;
-  color: #8bac0f;
+  color: var(--tui-accent);
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
@@ -60,16 +59,26 @@
   color: #d4d4d8;
   line-height: 1.7;
   font-size: 1.05rem;
-  font-family: monospace;
 }
 
 .viewportWrapper {
   width: 100%;
+  height: var(--view-h, 600px);
+  min-width: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0; */
-  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .sectionGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .snapSection {
+    padding: 6rem 1.5rem 2rem 1.5rem;
+    height: auto;
+    min-height: 100vh;
+  }
 }

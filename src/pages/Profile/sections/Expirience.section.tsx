@@ -1,5 +1,5 @@
 import { ResumeEntry } from "../components/ResumeEntry";
-import styles from "../Profile.module.css";
+import styles from "../../layout/PageLayout.module.css";
 
 function ExperienceSection() {
   return (

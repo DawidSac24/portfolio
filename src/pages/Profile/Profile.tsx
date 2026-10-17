@@ -1,9 +1,9 @@
 import { SideNav } from "../../components/Navigation/SideNav";
-import styles from "./Profile.module.css";
 import OverviewSection from "./sections/Overview.section";
 import EducationSection from "./sections/Education.section";
 import ExperienceSection from "./sections/Expirience.section";
 import PortfolioSection from "./sections/Portfolio.section";
+import styles from "../layout/PageLayout.module.css";
 
 export const Profile = () => {
   const navItems = [
