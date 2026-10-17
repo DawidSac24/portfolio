@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './ui.module.css';
+import React from "react";
+import styles from "./ui.module.css";
 
 interface SectionProps {
   id: string;

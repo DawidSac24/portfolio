@@ -1,8 +1,10 @@
+// /src/engine/scenes/scene.ts
 import * as THREE from "three";
 import { Exhibit } from "../exhibits/exhibit";
 import type { PostProcessEffect } from "../modifiers/passes/post-process-effect.interface";
+import type { LightingRig } from "./lighting.rigs";
 
-export abstract class Scene {
+export class Scene {
   public handle: THREE.Scene;
   public camera: THREE.PerspectiveCamera;
 
@@ -15,13 +17,20 @@ export abstract class Scene {
     this.camera.position.z = 5;
   }
 
-  public addExhibit(exhibit: Exhibit): void {
+  public addExhibit(exhibit: Exhibit): this {
     this.exhibits.push(exhibit);
     this.handle.add(exhibit.getMesh());
+    return this;
   }
 
-  public addEffect(effect: PostProcessEffect): void {
+  public addEffect(effect: PostProcessEffect): this {
     this.effects.push(effect);
+    return this;
+  }
+
+  public withLighting(rig: LightingRig): this {
+    rig(this.handle);
+    return this;
   }
 
   public getEffects(): readonly PostProcessEffect[] {
@@ -41,9 +50,9 @@ export abstract class Scene {
     this.handle.clear();
   }
 
-  public abstract load(): Promise<void>;
-  public abstract enter(): void;
-  public abstract exit(): void;
-  protected abstract onUpdate(deltaTime: number): void;
-  protected abstract onDispose(): void;
+  public async load(): Promise<void> {}
+  public enter(): void {}
+  public exit(): void {}
+  protected onUpdate(_deltaTime: number): void {}
+  protected onDispose(): void {}
 }

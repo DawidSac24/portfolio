@@ -23,7 +23,7 @@ function App() {
       <div style={{ position: "relative", zIndex: 1 }}>
         <Header />
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "2rem" }}>
+        <div style={{ margin: "0 auto", padding: "2rem" }}>
           <Routes>
             <Route path="/" element={<Profile />} />
             <Route path="/smartframe" element={<SmartframePage />} />
