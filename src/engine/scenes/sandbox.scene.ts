@@ -2,8 +2,10 @@ import * as THREE from "three";
 import { ExhibitBuilder } from "../builders/exhibit.builder";
 import { SaturnModel } from "../exhibits/saturn.exhibit";
 import { Scene } from "./scene";
-import { AsciiShaderDecorator } from "../modifiers/decorators/ascii.shader.decorator";
-import { InteractiveAsciiDecorator } from "../modifiers/decorators/ascii.interactive.decorator";
+import {
+  // AsciiEffect,
+  ColoredAsciiEffect,
+} from "../modifiers/passes/ascii.effect";
 
 export class SandboxScene extends Scene {
   public override async load(): Promise<void> {
@@ -19,18 +21,25 @@ export class SandboxScene extends Scene {
       SaturnModel,
     );
 
-    saturnBuilder
-      .withDecorator(AsciiShaderDecorator, {
-        darkColor: "#1c1b1b",
-        lightColor: "#e3e3e3",
-        hoverColor: "#f59e0b", // Pure white glow on hover
-        hoverRadius: 0.15, // Controls how wide the glow spreads
-        charSize: 8.0,
-      })
-      .withDecorator(InteractiveAsciiDecorator, this.camera);
-
     const saturn = await saturnBuilder.build();
     this.addExhibit(saturn);
+
+    this.addEffect(
+      new ColoredAsciiEffect({
+        charSize: 7.0,
+        // hoverColor: "#ffffff",
+        hoverRadius: 0.2,
+      }),
+    );
+
+    // this.addEffect(
+    //   new AsciiEffect({
+    //     darkColor: "#3a3a3a",
+    //     lightColor: "#ffffff",
+    //     // hoverColor: "#8bac0f",
+    //     charSize: 7.0,
+    //   }),
+    // );
   }
 
   public override enter(): void {}

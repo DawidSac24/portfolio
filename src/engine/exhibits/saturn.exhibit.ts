@@ -15,7 +15,7 @@ export class SaturnModel extends Exhibit {
 
     // 2. Mathematically force it to be exactly 4 units wide
     // (Since your camera is at Z=5, a 4-unit object fits perfectly on screen)
-    const desiredSize = 6;
+    const desiredSize = 7;
     const scaleFactor = desiredSize / maxDimension;
     saturnMesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
@@ -26,17 +26,35 @@ export class SaturnModel extends Exhibit {
     // 4. Shift the model so its exact center aligns with the world's (0,0,0)
     saturnMesh.position.sub(center);
 
+    // 1. Ensure the bottom/back of the rings reflect light properly from all angles
+    saturnMesh.traverse((child) => {
+      const mesh = child as THREE.Mesh;
+      if (mesh.isMesh && mesh.material) {
+        if (Array.isArray(mesh.material)) {
+          mesh.material.forEach((m) => (m.side = THREE.DoubleSide));
+        } else {
+          mesh.material.side = THREE.DoubleSide;
+        }
+      }
+    });
+
     this.group.add(saturnMesh);
 
-    // 5. Bring the light back to a reasonable real-world number
-    const ringLight = new THREE.SpotLight(0xffffff, 5.0);
-    ringLight.position.set(10, 10, 5);
-    ringLight.target = saturnMesh;
+    // Inside SaturnModel constructor:
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2); // Soft white light
+    // 1. Soft base ambient light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
     this.group.add(ambientLight);
 
-    this.group.add(ringLight);
+    // 2. Main key light (creates the bright side and shadow contrast)
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    keyLight.position.set(5, 8, 5);
+    this.group.add(keyLight);
+
+    // 3. Gentle bottom fill light (just enough to show the underside of the ring without washing it out)
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    fillLight.position.set(-5, -6, 3);
+    this.group.add(fillLight);
   }
 
   public override getMesh(): THREE.Object3D {
