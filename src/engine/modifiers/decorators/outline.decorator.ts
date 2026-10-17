@@ -21,4 +21,6 @@ export class OutlineDecorator extends ExhibitDecorator {
       }
     });
   }
+
+  protected override onDispose(): void {}
 }

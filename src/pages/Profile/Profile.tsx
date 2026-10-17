@@ -1,12 +1,3 @@
-// import {
-//   GitCommit,
-//   BriefcasePlus,
-//   FileText,
-//   Cpu,
-//   Code2,
-//   Music,
-// } from "lucide-react";
-// import { Badge } from "../../components//ui/Badge";
 import { Section } from "../../components/ui/Section";
 import { SideNav } from "../../components/Navigation/SideNav";
 import styles from "./Profile.module.css";
@@ -14,7 +5,6 @@ import styles from "./Profile.module.css";
 export const Profile = () => {
   const navItems = [
     { id: "overview", label: "About Me" },
-    { id: "this-portfolio", label: "About This Portfolio" },
     { id: "education", label: "Educational Background" },
     { id: "experience", label: "Work Experience" },
   ];
@@ -26,7 +16,6 @@ export const Profile = () => {
       <div className={styles.mainContent}>
         <Section id="overview" title="About Me">
           <div className={styles.profileHeader}>
-            {/* Placeholder for Profile Picture */}
             <div className={styles.profileImage}></div>
 
             <div className={styles.bioContainer}>
@@ -36,67 +25,129 @@ export const Profile = () => {
                 bridge the gap between both worlds by pursuing my career in
                 Embedded Systems/Firmware Engineering.
                 <br />
+                <br />
                 Although i dont have any professional experience in this field
                 yet, i strive to work diligently and fit into the role. To
-                porsue that dream, I studied electronics in technnical school,
+                pursue that dream, I studied electronics in technnical school,
                 and later transitioned into computer science when enrolling into
                 college. Aside from studies, i also work on personal projects in
                 the goal of improving my skills and learning from my past
                 mistakes.
               </p>
-
-              {/* <div className={styles.techStack}>
-                <Badge name="Embedded C/C++" icon={Cpu} />
-                <Badge name="React & WebGL" icon={Code2} />
-              </div>
-
-              <br />
-              <div className={styles.links}>
-                <a href="#" className={styles.link}>
-                  <GitCommit size={20} /> GitHub
-                </a>
-                <a href="#" className={styles.link}>
-                  <BriefcasePlus size={20} /> LinkedIn
-                </a>
-                <a href="#" className={styles.link}>
-                  <FileText size={20} /> Resume
-                </a>
-              </div> */}
             </div>
           </div>
         </Section>
 
-        <Section id="this-portfolio" title="About this portfolio">
-          <p></p>
-        </Section>
-
         <Section id="education" title="Educational Background">
-          <p>
-            <h3>Bachelor in aplied Computer Science</h3>
-            Haute ´Ecole L´eonard de Vinci
-            <h5>Sep. 2025 – Now</h5>Courses: Linux Systems, C Programming, Data
-            Structures & Algorithms, Web Development, DevOps
-          </p>
-          <p>
-            <h3>Technical Qualification Degree in Electronics (CESS) </h3>
-            INRACI (Institut de Radio´electricit´e et Cin´ematographie)
-            <h5>Sep. 2022 – Jun. 2025</h5>
-            Courses: Analog & Digital Electronics, Arduino Developement,
-            Schematic & PCB Design, Prototyping, 3D CAD
-            <h5>Academic distinction: Jury prize for the final year project</h5>
-          </p>
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeTitle}>
+                Haute École Léonard de Vinci
+              </span>
+              <span className={styles.resumeDate}>Sep. 2025 -- Now</span>
+            </div>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeSubtitle}>
+                B.Sc. in Applied Computer Science
+              </span>
+              <span className={styles.resumeLocation}>
+                Brussels, Woluwe-Saint-Lambert
+              </span>
+            </div>
+            <div className={styles.resumeDetails}>
+              <ul>
+                <li>
+                  <strong>Courses:</strong> Linux Systems, C Programming, Data
+                  Structures & Algorithms, Web Development, DevOps
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeTitle}>
+                INRACI (Institut de Radioélectricité et Cinématographie)
+              </span>
+              <span className={styles.resumeDate}>Sep. 2022 -- Jun. 2025</span>
+            </div>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeSubtitle}>
+                Technical Qualification Degree in Electronics (CESS)
+              </span>
+              <span className={styles.resumeLocation}>Brussels, Forest</span>
+            </div>
+            <div className={styles.resumeDetails}>
+              <ul>
+                <li>
+                  <strong>Courses:</strong> Analog & Digital Electronics,
+                  Arduino Developement, Schematic & PCB Design, Prototyping, 3D
+                  CAD
+                </li>
+                <li>
+                  <strong>Academic distinction:</strong> Jury prize for the
+                  final year project
+                </li>
+              </ul>
+            </div>
+          </div>
         </Section>
 
         <Section id="experience" title="Work Experience">
-          <p>
-            Private Computer Science Tutor Sep. 2025 – Jan. 2026 One-on-one
-            coaching for a 1st-year B.Sc. Computer Science student Brussels
-            Private Mathematics & Physics Tutor May 2024 – Jun. 2025 Academic
-            coaching for a 3rd-year secondary school student Brussels Dishwasher
-            and Waiter May 2025 – Jul. 2026 Walkin’Thai Brussels, Ixelles
-            Convenience Store Cashier Aug. 2024 – Mar. 2025 Chez Pawel Brussels,
-            Uccle
-          </p>
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeTitle}>
+                Private Computer Science Tutor
+              </span>
+              <span className={styles.resumeDate}>Sep. 2025 -- Jan. 2026</span>
+            </div>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeSubtitle}>
+                One-on-one coaching for a 1st-year B.Sc. Computer Science
+                student
+              </span>
+              <span className={styles.resumeLocation}>Brussels</span>
+            </div>
+          </div>
+
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeTitle}>
+                Private Mathematics & Physics Tutor
+              </span>
+              <span className={styles.resumeDate}>May 2024 -- Jun. 2025</span>
+            </div>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeSubtitle}>
+                Academic coaching for a 3rd-year secondary school student
+              </span>
+              <span className={styles.resumeLocation}>Brussels</span>
+            </div>
+          </div>
+
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeTitle}>Dishwasher and Waiter</span>
+              <span className={styles.resumeDate}>May 2025 -- Jul. 2026</span>
+            </div>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeSubtitle}>Walkin'Thai</span>
+              <span className={styles.resumeLocation}>Brussels, Ixelles</span>
+            </div>
+          </div>
+
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeTitle}>
+                Convenience Store Cashier
+              </span>
+              <span className={styles.resumeDate}>Aug. 2024 -- Mar. 2025</span>
+            </div>
+            <div className={styles.resumeRow}>
+              <span className={styles.resumeSubtitle}>Chez Pawel</span>
+              <span className={styles.resumeLocation}>Brussels, Uccle</span>
+            </div>
+          </div>
         </Section>
       </div>
     </div>
