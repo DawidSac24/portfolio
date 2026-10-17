@@ -1,30 +1,14 @@
-import { useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Header } from "./components/Navigation/Header";
 import { Profile } from "./pages/Profile/Profile";
 import { SmartframePage } from "./pages/SmartFrame/SmartFramePage";
 import SandboxPage from "./pages/Sandbox/SandboxPage";
-import { EngineCore } from "./engine/core/engine.core";
 
 function App() {
-  const canvasContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!canvasContainerRef.current) return;
-
-    const engine = EngineCore.getInstance();
-    engine.mount(canvasContainerRef.current);
-
-    return () => {
-      engine.destroy();
-    };
-  }, []);
-
   return (
     <BrowserRouter>
       <div
-        ref={canvasContainerRef}
         style={{
           position: "fixed",
           top: 0,
