@@ -28,7 +28,7 @@ export const Profile = () => {
                 <br />
                 Although i dont have any professional experience in this field
                 yet, i strive to work diligently and fit into the role. To
-                porsue that dream, I studied electronics in technnical school,
+                pursue that dream, I studied electronics in technnical school,
                 and later transitioned into computer science when enrolling into
                 college. Aside from studies, i also work on personal projects in
                 the goal of improving my skills and learning from my past
