@@ -43,7 +43,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Profile />} />
             <Route path="/smartframe" element={<SmartframePage />} />
-            {/* <Route path="/sandbox" element={<SandboxPage />} /> */}
+            {import.meta.env.DEV && (
+              <Route path="/sandbox" element={<SandboxPage />} />
+            )}
 
             <Route
               path="/mbplayer"
