@@ -1,6 +1,6 @@
 import { SideNav } from "../../components/Navigation/SideNav";
-import { Viewport3D } from "../../components/ui/ViewPort3D";
-import { ExhibitBuilder } from "../../engine/builders/exhibit.builder";
+// import { Viewport3D } from "../../components/ui/ViewPort3D";
+// import { ExhibitBuilder } from "../../engine/builders/exhibit.builder";
 import styles from "../layout/PageLayout.module.css";
 
 export const SmartframePage = () => {
@@ -41,7 +41,7 @@ export const SmartframePage = () => {
             using my mistakes as stepping stones to improve.
           </p>
         </div>
-
+        {/* 
         <div className={styles.viewportWrapper}>
           <Viewport3D
             sceneId="profile-portrait"
@@ -63,7 +63,7 @@ export const SmartframePage = () => {
             }}
             style={{ width: "100%", height: "500px" }}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
