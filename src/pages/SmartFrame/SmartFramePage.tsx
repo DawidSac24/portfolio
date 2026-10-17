@@ -1,89 +1,70 @@
-// import { SideNav } from "../../components/Navigation/SideNav";
-// import layoutStyles from "../layout/PageLayout.module.css";
+import { SideNav } from "../../components/Navigation/SideNav";
+import { Viewport3D } from "../../components/ui/ViewPort3D";
+import { ExhibitBuilder } from "../../engine/builders/exhibit.builder";
+import styles from "../layout/PageLayout.module.css";
 
 export const SmartframePage = () => {
-  // // const navItems = [
-  // //   { id: "overview", label: "Overview" },
-  // //   { id: "experience", label: "Work Experience" },
-  // //   { id: "education", label: "Education" },
-  // // ];
-  // // We use a div reference, Three.js will inject the <canvas> inside it
-  // const mountRef = useRef<HTMLDivElement>(null);
+  const navItems = [
+    { id: "overview", label: "Overview" },
+    { id: "features", label: "Features" },
+    { id: "specification", label: "Technical Specifications" },
+  ];
 
-  // useEffect(() => {
-  //   if (!mountRef.current) return;
+  return (
+    <div className={styles.pageLayout}>
+      <SideNav items={navItems} />
 
-  //   // 1. The Core Engines
-  //   const scene = new THREE.Scene();
-  //   scene.background = new THREE.Color(0x0a0a0a); // Dark background
+      <div
+        className={styles.sectionGrid}
+        style={
+          {
+            "--col-text": "1.2fr" /* Give text slightly more space */,
+            "--col-view": "0.8fr" /* Squeeze the 3D model slightly */,
+            "--max-w": "1400px" /* Widen the entire section */,
+            "--grid-gap": "3rem" /* Pull them closer together */,
+          } as React.CSSProperties
+        }
+      >
+        <div>
+          <h2 className={styles.sectionHeading}>+-- About Me --+</h2>
+          <p className={styles.bioText} style={{ margin: 0 }}>
+            Hi! My name is Dawid and I am a computer science student. I am
+            passionate about informatics and electronics, and my goal is to
+            bridge the gap between both worlds by pursuing a career in Embedded
+            Systems and Firmware Engineering.
+          </p>
+          <p className={styles.bioText} style={{ margin: 0 }}>
+            To build a strong hardware foundation, I studied electronics in
+            technical school before transitioning into software by enrolling in
+            college for computer science. I continuously push myself through
+            complex personal projects, constantly exploring new technologies and
+            using my mistakes as stepping stones to improve.
+          </p>
+        </div>
 
-  //   const camera = new THREE.PerspectiveCamera(
-  //     75,
-  //     mountRef.current.clientWidth / mountRef.current.clientHeight,
-  //     0.1,
-  //     1000,
-  //   );
-  //   camera.position.z = 2;
+        <div className={styles.viewportWrapper}>
+          <Viewport3D
+            sceneId="profile-portrait"
+            buildFn={async () => {
+              const width = 8;
+              const height = width * 1.28536880290206;
+              const profilePic = await new ExhibitBuilder(
+                "/profile-no-bg.png",
+                ImageExhibit,
+                { width: width, height: height },
+              ).build();
 
-  //   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  //   renderer.setSize(
-  //     mountRef.current.clientWidth,
-  //     mountRef.current.clientHeight,
-  //   );
-  //   mountRef.current.appendChild(renderer.domElement);
-
-  //   // 2. The Geometry (Amber Wireframe Cube)
-  //   // const geometry = new THREE.BoxGeometry();
-  //   // const material = new THREE.MeshBasicMaterial({
-  //   //   color: 0xf59e0b, // TUI Amber
-  //   //   wireframe: true,
-  //   // });
-  //   // const cube = new THREE.Mesh(geometry, material);
-  //   // scene.add(cube);
-
-  //   // // 3. The Render Loop
-  //   // let animationFrameId: number;
-  //   // const animate = () => {
-  //   //   animationFrameId = requestAnimationFrame(animate);
-
-  //   //   cube.rotation.x += 0.01;
-  //   //   cube.rotation.y += 0.01;
-
-  //   //   renderer.render(scene, camera);
-  //   // };
-  //   // animate();
-
-  //   // 4. Handle Window Resize
-  //   const handleResize = () => {
-  //     if (!mountRef.current) return;
-  //     camera.aspect =
-  //       mountRef.current.clientWidth / mountRef.current.clientHeight;
-  //     camera.updateProjectionMatrix();
-  //     renderer.setSize(
-  //       mountRef.current.clientWidth,
-  //       mountRef.current.clientHeight,
-  //     );
-  //   };
-  //   window.addEventListener("resize", handleResize);
-
-  //   const loader = new FBXLoader();
-  //   loader.loadAsync("src/assets/saturn/source/saturn.fbx").then((object) => {
-  //     scene.add(object);
-  //   });
-
-  //   // 5. Cleanup on Unmount
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //     // cancelAnimationFrame(animationFrameId);
-  //     if (mountRef.current) {
-  //       mountRef.current.removeChild(renderer.domElement);
-  //     }
-  //     renderer.dispose();
-  //     // geometry.dispose();
-  //     // material.dispose();
-  //   };
-  // }, []);
-
-  // The container must have a defined height for the canvas to fill
-  return <div />;
+              return new Scene().addExhibit(profilePic).addEffect(
+                new ColoredAsciiEffect({
+                  charSize: 6.0,
+                  hoverRadius: 0.2,
+                }),
+              );
+            }}
+            style={{ width: "100%", height: "500px" }}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };

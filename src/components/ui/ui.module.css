@@ -30,3 +30,31 @@
 .sectionContent {
   color: var(--tui-text);
 }
+
+.Card {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  /* background: rgba(13, 17, 23, 0.8); */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* border-left: none; */
+  border-radius: 0; /* Strictly sharp TUI edges */
+  margin-bottom: 1.2rem;
+  font-family: monospace;
+}
+
+/* .Pipe {
+  color: #8bac0f;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 1rem 0.6rem 1rem 0.8rem;
+  user-select: none; 
+  display: flex;
+  align-items: center;
+} */
+
+.Body {
+  padding: 1rem 1.2rem 1rem 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+}

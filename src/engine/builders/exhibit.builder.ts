@@ -1,29 +1,31 @@
 import type { Exhibit } from "../exhibits/exhibit";
-import * as THREE from "three";
 import type { ExhibitDecorator } from "../modifiers/decorators/exhibit.decorator";
 import { AssetManager } from "../core/assets.manager";
 
-interface GLTFPayload {
-  scene?: THREE.Object3D;
-}
+type ExhibitConstructor<Args extends unknown[]> = new (
+  url: string,
+  asset: unknown,
+  ...args: Args
+) => Exhibit;
 
-export class ExhibitBuilder {
+export class ExhibitBuilder<Args extends unknown[] = unknown[]> {
   private modelUrl: string;
-  private baseClass: new (url: string, mesh: THREE.Object3D) => Exhibit;
-
+  private baseClass: ExhibitConstructor<Args>;
+  private constructorArgs: Args;
   private pipeline: ((model: Exhibit) => Exhibit)[] = [];
 
-  constructor(
-    url: string,
-    baseClass: new (url: string, mesh: THREE.Object3D) => Exhibit,
-  ) {
+  constructor(url: string, baseClass: ExhibitConstructor<Args>, ...args: Args) {
     this.modelUrl = url;
     this.baseClass = baseClass;
+    this.constructorArgs = args;
   }
 
-  public withDecorator<T extends ExhibitDecorator, Args extends unknown[]>(
-    DecoratorClass: new (model: Exhibit, ...args: Args) => T,
-    ...args: Args
+  public withDecorator<
+    T extends ExhibitDecorator,
+    DecoratorArgs extends unknown[],
+  >(
+    DecoratorClass: new (model: Exhibit, ...args: DecoratorArgs) => T,
+    ...args: DecoratorArgs
   ): this {
     this.pipeline.push((model) => new DecoratorClass(model, ...args));
     return this;
@@ -31,12 +33,13 @@ export class ExhibitBuilder {
 
   public async build(): Promise<Exhibit> {
     const am = AssetManager.getInstance();
-    const loadedAsset = await am.acquire<GLTFPayload>(this.modelUrl);
-    const mesh = loadedAsset.scene
-      ? loadedAsset.scene
-      : (loadedAsset as unknown as THREE.Object3D);
+    const asset = await am.acquire<unknown>(this.modelUrl);
 
-    let exhibit: Exhibit = new this.baseClass(this.modelUrl, mesh);
+    let exhibit: Exhibit = new this.baseClass(
+      this.modelUrl,
+      asset,
+      ...this.constructorArgs,
+    );
 
     for (const wrapWithDecorator of this.pipeline) {
       exhibit = wrapWithDecorator(exhibit);
