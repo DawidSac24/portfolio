@@ -9,13 +9,13 @@ function OverviewSection() {
   return (
     <section id="overview" className={styles.snapSection}>
       <div
-        className={styles.sectionGrid}
+        className={styles.sectionFlex}
         style={
           {
-            "--col-text": "1.2fr" /* Give text slightly more space */,
-            "--col-view": "0.8fr" /* Squeeze the 3D model slightly */,
-            "--max-w": "1400px" /* Widen the entire section */,
-            "--grid-gap": "3rem" /* Pull them closer together */,
+            "--max-w": "1350px",
+            "--flex-text": "1 1 52%",
+            "--flex-view": "1 1 48%",
+            "--text-pl": "2.5rem",
           } as React.CSSProperties
         }
       >
@@ -45,7 +45,7 @@ function OverviewSection() {
               const profilePic = await new ExhibitBuilder(
                 "/profile-no-bg.png",
                 ImageExhibit,
-                { width: width, height: height },
+                { width, height },
               ).build();
 
               return new Scene().addExhibit(profilePic).addEffect(
@@ -55,7 +55,7 @@ function OverviewSection() {
                 }),
               );
             }}
-            style={{ width: "100%", height: "500px" }}
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
       </div>

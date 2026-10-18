@@ -1,3 +1,4 @@
+// PortfolioSection.tsx
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
 import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
 import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
@@ -9,38 +10,39 @@ function PortfolioSection() {
   return (
     <section id="portfolio" className={styles.snapSection}>
       <div
-        className={styles.sectionGrid}
+        className={styles.sectionFlex}
         style={
           {
-            "--col-text": "1.2fr" /* Give text slightly more space */,
-            "--col-view": "1fr" /* Squeeze the 3D model slightly */,
-            "--max-w": "1800px" /* Widen the entire section */,
-            "--grid-gap": "3rem" /* Pull them closer together */,
+            "--max-w": "1500px", // Wider max container for Saturn's rings
+            "--flex-view": "1 1 55%", // Give viewport 55% of the row
+            "--flex-text": "1 1 45%", // Give text 45% of the row
+            "--view-max-w": "800px", // Expand max width beyond default 650px
+            "--view-h": "550px", // Ensure clean height
           } as React.CSSProperties
         }
       >
         <div className={styles.viewportWrapper}>
-          <div className={styles.viewportWrapper}>
-            <Viewport3D
-              sceneId="profile-saturn"
-              buildFn={async () => {
-                const saturn = await new ExhibitBuilder(
-                  "/models/imports/saturn_-_ringed_planet/scene.gltf",
-                  SaturnModel,
-                  8,
-                ).build();
+          <Viewport3D
+            sceneId="profile-saturn"
+            buildFn={async () => {
+              const saturn = await new ExhibitBuilder(
+                "/models/imports/saturn_-_ringed_planet/scene.gltf",
+                SaturnModel,
+                7,
+              ).build();
 
-                return new Scene().addExhibit(saturn).addEffect(
-                  new ColoredAsciiEffect({
-                    charSize: 6.0,
-                    hoverRadius: 0.2,
-                  }),
-                );
-              }}
-              // Let width and height default to 100% to fill the .viewportWrapper box
-              style={{ width: "100%", height: "100%" }}
-            />
-          </div>
+              const scene = new Scene().addExhibit(saturn).addEffect(
+                new ColoredAsciiEffect({
+                  charSize: 6.0,
+                  hoverRadius: 0.2,
+                }),
+              );
+              scene.camera.position.z = 4.5;
+
+              return scene;
+            }}
+            style={{ width: "100%", height: "100%" }}
+          />
         </div>
 
         <div className={styles.textContent}>

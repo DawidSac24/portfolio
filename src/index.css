@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: transparent;
+  background-color: #050505;
   color: var(--tui-text);
   font-family:
     "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,

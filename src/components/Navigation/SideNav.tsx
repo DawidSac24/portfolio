@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNav } from "./nav.context";
 import styles from "./Navigation.module.css";
 
 export interface NavItem {
@@ -6,11 +7,14 @@ export interface NavItem {
   label: string;
 }
 
-export const SideNav = ({ items }: { items: NavItem[] }) => {
-  const [activeId, setActiveId] = useState<string>(items[0]?.id || "");
+export const SideNav = () => {
+  const { navItems } = useNav();
+  const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    const sectionElements = items
+    if (navItems.length === 0) return;
+
+    const sectionElements = navItems
       .map((item) => document.getElementById(item.id))
       .filter((el): el is HTMLElement => el !== null);
 
@@ -39,13 +43,19 @@ export const SideNav = ({ items }: { items: NavItem[] }) => {
     return () => {
       observer.disconnect();
     };
-  }, [items]);
+  }, [navItems]);
+
+  if (navItems.length === 0) return null;
+
+  const currentActiveId = navItems.some((item) => item.id === activeId)
+    ? activeId
+    : (navItems[0]?.id ?? "");
 
   return (
     <nav className={styles.sideNav}>
       <ul className={styles.navList}>
-        {items.map((item) => {
-          const isActive = activeId === item.id;
+        {navItems.map((item) => {
+          const isActive = currentActiveId === item.id;
           return (
             <li key={item.id}>
               <a

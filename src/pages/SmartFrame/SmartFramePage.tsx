@@ -1,18 +1,15 @@
-import { SideNav } from "../../components/Navigation/SideNav";
-// import { Viewport3D } from "../../components/ui/ViewPort3D";
-// import { ExhibitBuilder } from "../../engine/builders/exhibit.builder";
 import styles from "../layout/PageLayout.module.css";
 
 export const SmartframePage = () => {
-  const navItems = [
-    { id: "overview", label: "Overview" },
-    { id: "features", label: "Features" },
-    { id: "specification", label: "Technical Specifications" },
-  ];
+  // const navItems = [
+  //   { id: "overview", label: "Overview" },
+  //   { id: "features", label: "Features" },
+  //   { id: "specification", label: "Technical Specifications" },
+  // ];
 
   return (
     <div className={styles.pageLayout}>
-      <SideNav items={navItems} />
+      {/* <SideNav items={navItems} /> */}
 
       <div
         className={styles.sectionGrid}

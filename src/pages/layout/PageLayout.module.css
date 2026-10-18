@@ -1,7 +1,10 @@
+/* /src/pages/layouts/PageLayout.module.css */
+
 .pageLayout {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 80px);
+  margin-top: 70px;
+  height: calc(100vh - 70px);
   overflow: hidden;
 }
 
@@ -19,31 +22,58 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 3rem;
+  padding: 2rem 4rem;
   box-sizing: border-box;
 }
 
-.sectionGrid {
-  display: grid;
-  grid-template-columns: var(--col-text, 1fr) var(--col-view, 1fr);
-  gap: var(--grid-gap, 4rem);
+.sectionFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  max-width: var(--max-w, 1200px);
+  gap: 3rem;
+  max-width: var(--max-w, 1400px);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .textContent {
+  flex: var(--flex-text, 1 1 50%);
+  max-width: var(--text-max-w, 600px);
+  padding-left: var(--text-pl, 0rem);
+  margin-left: var(--text-ml, 0rem);
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  box-sizing: border-box;
+}
+
+.singleColContainer {
+  width: 100%;
+  max-width: var(--max-w, 900px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .textContentWide {
-  max-width: 900px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.viewportWrapper {
+  flex: var(--flex-view, 1 1 50%);
+  height: var(--view-h, 550px);
+  max-width: var(--view-max-w, 650px);
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sectionHeading {
@@ -60,24 +90,39 @@
   font-size: 1.05rem;
 }
 
-.viewportWrapper {
-  width: 100%;
-  height: var(--view-h, 600px);
-  min-width: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
 @media (max-width: 768px) {
-  .sectionGrid {
-    grid-template-columns: 1fr;
+  .snapSection {
+    height: auto;
+    min-height: calc(100vh - 70px);
+    padding: 3rem 1.5rem;
+  }
+
+  .sectionFlex {
+    flex-direction: column;
+    justify-content: center;
     gap: 2rem;
   }
 
-  .snapSection {
-    padding: 6rem 1.5rem 2rem 1.5rem;
-    height: auto;
-    min-height: 100vh;
+  .textContent,
+  .viewportWrapper {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .textContent {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .viewportWrapper {
+    height: 350px;
+  }
+
+  .singleColContainer {
+    max-width: 100%;
+    padding: 0 0.5rem;
   }
 }
