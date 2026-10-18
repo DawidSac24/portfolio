@@ -1,3 +1,4 @@
+/* /src/index.css */
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 :root {
@@ -12,7 +13,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 
 body {
@@ -21,11 +21,41 @@ body {
   font-family:
     "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     monospace;
-  -webkit-font-smoothing: none; /* Disables anti-aliasing for a crisper, pixelated look */
+  -webkit-font-smoothing: none;
   min-height: 100vh;
   line-height: 1.5;
 }
 
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 a {
   color: var(--tui-accent);
+}
+
+/* 1. FIREFOX SUPPORT (Standard CSS) */
+* {
+  /* Sets the thumb to accent color, and the track to dark gray */
+  scrollbar-color: var(--tui-text) rgba(13, 17, 23, 1);
+  scrollbar-width: thin; /* Makes it blocky and sharp instead of the thick default */
+}
+
+/* 2. CHROME / EDGE / SAFARI SUPPORT */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(13, 17, 23, 1);
+  border-left: 1px dashed rgba(255, 255, 255, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--tui-text);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
 }

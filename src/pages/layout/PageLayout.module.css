@@ -1,20 +1,19 @@
-pageLayout {
+.pageLayout {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 80px);
   overflow: hidden;
 }
 
 .snapContainer {
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  padding-left: 120px;
 }
 
 .snapSection {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   scroll-snap-align: start;
   display: flex;

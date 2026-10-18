@@ -1,16 +1,16 @@
-/* Header */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 50;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background: var(--tui-bg);
-  border-bottom: 1px dashed var(--tui-border); /* Dashed lines feel more terminal-like */
+  border-bottom: 1px dashed var(--tui-border);
 }
-
 .headerLogo {
   font-weight: bold;
   color: var(--tui-accent);
@@ -43,13 +43,45 @@
   user-select: none;
 }
 
-/* SideNav */
 .sideNav {
   position: fixed;
-  left: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
   z-index: 40;
+
+  /* =========================================
+     UNCOMMENT EXACTLY ONE OF THESE POSITIONS
+     ========================================= */
+
+  /* 1. MIDDLE LEFT (Default) */
+  /* left: 2rem;
+  top: 50%;
+  transform: translateY(-50%); */
+
+  /* 2. MIDDLE RIGHT */
+  /* left: auto;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%); */
+
+  /* 3. TOP LEFT */
+  /* left: 2rem;
+  top: 2rem;
+  transform: none; */
+
+  /* 4. TOP RIGHT */
+  /* left: auto; right: 2rem; top: 2rem; transform: none; */
+
+  /* 5. BOTTOM LEFT */
+  left: 2rem;
+  top: auto;
+  bottom: 2rem;
+  transform: none;
+
+  /* 6. BOTTOM RIGHT */
+  /* left: auto;
+  right: 2rem;
+  top: auto;
+  bottom: 2rem;
+  transform: none; */
 }
 
 .navList {
