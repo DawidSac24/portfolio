@@ -4,6 +4,7 @@ import { Profile } from "./pages/Profile/Profile";
 import { SmartframePage } from "./pages/SmartFrame/SmartFramePage";
 import { AppLayout } from "./pages/layouts/AppLayout";
 import { NavProvider } from "./components/Navigation/NavProvider";
+import { AutoMatePage } from "./pages/AutoMate/AutoMatePage";
 
 function App() {
   return (
@@ -28,20 +29,7 @@ function App() {
                 </div>
               }
             />
-            <Route
-              path="/automate"
-              element={
-                <div
-                  style={{
-                    color: "#a1a1aa",
-                    padding: "4rem",
-                    marginLeft: "150px",
-                  }}
-                >
-                  Automate coming soon...
-                </div>
-              }
-            />
+            <Route path="/automate" element={<AutoMatePage />} />
           </Route>
         </Routes>
       </NavProvider>

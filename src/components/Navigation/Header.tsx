@@ -33,17 +33,6 @@ export const Header = () => {
         </NavLink>
 
         <NavLink
-          to="/mbplayer"
-          className={({ isActive }) =>
-            isActive
-              ? `${styles.tabTrigger} ${styles.active}`
-              : styles.tabTrigger
-          }
-        >
-          MBPlayer
-        </NavLink>
-
-        <NavLink
           to="/automate"
           className={({ isActive }) =>
             isActive
@@ -52,6 +41,17 @@ export const Header = () => {
           }
         >
           Automate
+        </NavLink>
+
+        <NavLink
+          to="/mbplayer"
+          className={({ isActive }) =>
+            isActive
+              ? `${styles.tabTrigger} ${styles.active}`
+              : styles.tabTrigger
+          }
+        >
+          MBPlayer
         </NavLink>
       </nav>
     </header>
