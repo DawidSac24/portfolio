@@ -15,10 +15,7 @@ export const FirmwareSection = () => (
         }}
       >
         <Card>
-          <h3
-            className={styles.sectionHeading}
-            style={{ fontSize: "1.1rem", color: "var(--tui-text)" }}
-          >
+          <h3 className={styles.sectionHeading} style={{ fontSize: "1.1rem" }}>
             {">"} Min-Max Algorithm & Alpha-Beta Pruning
           </h3>
           <p className={styles.bioText} style={{ margin: 0 }}>

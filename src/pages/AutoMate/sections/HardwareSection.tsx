@@ -19,10 +19,7 @@ export const HardwareSection = () => (
         }}
       >
         <Card>
-          <h3
-            className={styles.sectionHeading}
-            style={{ fontSize: "1.1rem", color: "var(--tui-text)" }}
-          >
+          <h3 className={styles.sectionHeading} style={{ fontSize: "1.1rem" }}>
             {">"} Microcontroller & Interface
           </h3>
           <p className={styles.bioText} style={{ margin: 0 }}>
@@ -34,10 +31,7 @@ export const HardwareSection = () => (
         </Card>
 
         <Card>
-          <h3
-            className={styles.sectionHeading}
-            style={{ fontSize: "1.1rem", color: "var(--tui-text)" }}
-          >
+          <h3 className={styles.sectionHeading} style={{ fontSize: "1.1rem" }}>
             {">"} Magnetic Electromagnet System
           </h3>
           <p className={styles.bioText} style={{ margin: 0 }}>
@@ -50,10 +44,7 @@ export const HardwareSection = () => (
         </Card>
 
         <Card>
-          <h3
-            className={styles.sectionHeading}
-            style={{ fontSize: "1.1rem", color: "var(--tui-text)" }}
-          >
+          <h3 className={styles.sectionHeading} style={{ fontSize: "1.1rem" }}>
             {">"} Multiplexed Sensor Grid
           </h3>
           <p className={styles.bioText} style={{ margin: 0 }}>
