@@ -52,10 +52,7 @@ export const SmartframePage = () => {
               },
             ]}
           />
-          <h4 style={{ color: "var(--tui-accent)" }}>
-            [Note: there should be a 3d model instead, but it isn't finished
-            yet]
-          </h4>
+          [Note: there should be a 3d model instead, but it isn't finished yet]
         </div>
       }
     >
