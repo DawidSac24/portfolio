@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { ExhibitBuilder } from "../builders/exhibit.builder";
-import { SaturnModel } from "../exhibits/saturn.exhibit";
+import { SaturnModel } from "../exhibits/profile/saturn.exhibit";
 import { Scene } from "./scene";
 import {
   // AsciiEffect,

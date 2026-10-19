@@ -1,5 +1,5 @@
 import { ResumeEntry } from "../components/ResumeEntry";
-import styles from "../../layout/PageLayout.module.css";
+import styles from "../../layouts/PageLayout.module.css";
 
 function EducationSection() {
   return (

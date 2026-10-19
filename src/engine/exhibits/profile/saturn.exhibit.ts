@@ -1,4 +1,4 @@
-import { Exhibit } from "./exhibit";
+import { Exhibit } from "../exhibit";
 import * as THREE from "three";
 
 export class SaturnModel extends Exhibit {

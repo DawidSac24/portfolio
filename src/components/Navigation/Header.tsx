@@ -21,20 +21,6 @@ export const Header = () => {
 
         <span className={styles.separator}>my main projects |</span>
 
-        {import.meta.env.DEV && (
-          <NavLink
-            to="/sandbox"
-            end
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.tabTrigger} ${styles.active}`
-                : styles.tabTrigger
-            }
-          >
-            Sandbox
-          </NavLink>
-        )}
-
         <NavLink
           to="/smartframe"
           className={({ isActive }) =>

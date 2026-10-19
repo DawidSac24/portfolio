@@ -55,7 +55,7 @@ export class AssetManager {
       return this.cache.retain(url) as T;
     }
 
-    const ext = url.split(".").pop();
+    const ext = url.split(".").pop()?.toLowerCase();
     if (!ext) {
       throw new Error(`Cannot determine file extension for URL: ${url}`);
     }

@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/Profile/Profile";
 import { SmartframePage } from "./pages/SmartFrame/SmartFramePage";
-import { AppLayout } from "./pages/layout/AppLayout";
+import { AppLayout } from "./pages/layouts/AppLayout";
 import { NavProvider } from "./components/Navigation/NavProvider";
 
 function App() {
@@ -25,6 +25,20 @@ function App() {
                   }}
                 >
                   MBPlayer coming soon...
+                </div>
+              }
+            />
+            <Route
+              path="/automate"
+              element={
+                <div
+                  style={{
+                    color: "#a1a1aa",
+                    padding: "4rem",
+                    marginLeft: "150px",
+                  }}
+                >
+                  Automate coming soon...
                 </div>
               }
             />

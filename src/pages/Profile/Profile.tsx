@@ -1,10 +1,11 @@
-import OverviewSection from "./sections/Overview.section";
-import EducationSection from "./sections/Education.section";
-import ExperienceSection from "./sections/Expirience.section";
+// /src/pages/Profile/Profile.tsx
 import { useEffect } from "react";
 import { useNav } from "../../components/Navigation/nav.context";
-import styles from "../layout/PageLayout.module.css";
-import PortfolioSection from "./sections/Portfolio.section";
+import { SnapScroller } from "../layouts/SnapScroller";
+import OverviewSection from "./sections/OverviewSection";
+import PortfolioSection from "./sections/PortfolioSection";
+import EducationSection from "./sections/EducationSection";
+import ExperienceSection from "./sections/ExpirienceSection";
 
 export const Profile = () => {
   const { setNavItems } = useNav();
@@ -12,7 +13,7 @@ export const Profile = () => {
   useEffect(() => {
     setNavItems([
       { id: "overview", label: "About Me" },
-      { id: "portfolio", label: "About this portfolio" },
+      { id: "portfolio", label: "About This Portfolio" },
       { id: "education", label: "Educational Background" },
       { id: "experience", label: "Work Experience" },
     ]);
@@ -21,13 +22,11 @@ export const Profile = () => {
   }, [setNavItems]);
 
   return (
-    <div className={styles.pageLayout}>
-      <div className={styles.snapContainer}>
-        <OverviewSection />
-        <PortfolioSection />
-        <EducationSection />
-        <ExperienceSection />
-      </div>
-    </div>
+    <SnapScroller>
+      <OverviewSection />
+      <PortfolioSection />
+      <EducationSection />
+      <ExperienceSection />
+    </SnapScroller>
   );
 };

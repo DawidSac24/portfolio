@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Exhibit } from "./exhibit";
+import { Exhibit } from "../exhibit";
 
 export class CubeModel extends Exhibit {
   public constructor(sourceUrl: string) {

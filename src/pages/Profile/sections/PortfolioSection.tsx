@@ -3,8 +3,8 @@ import { Viewport3D } from "../../../components/ui/ViewPort3D";
 import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
 import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
 import { Scene } from "../../../engine/scenes/scene";
-import { SaturnModel } from "../../../engine/exhibits/saturn.exhibit";
-import styles from "../../layout/PageLayout.module.css";
+import { SaturnModel } from "../../../engine/exhibits/profile/saturn.exhibit";
+import styles from "../../layouts/PageLayout.module.css";
 
 function PortfolioSection() {
   return (

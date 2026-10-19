@@ -1,0 +1,71 @@
+.scrollViewport {
+  position: relative;
+  width: 100vw;
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.container {
+  display: flex;
+  max-width: var(--max-content-w, 1400px);
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.stickyColumn {
+  flex: 1 1 50%;
+  min-width: 0;
+  position: relative;
+}
+
+.stickyStage {
+  position: sticky;
+  top: 2rem;
+  height: calc(100vh - 110px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollContent {
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10vh 0 10rem 3rem;
+  gap: 25vh; /* RESTORED: Adds a guaranteed breathing space between sections */
+  box-sizing: border-box;
+}
+
+@media (max-width: 868px) {
+  .container {
+    flex-direction: column !important;
+    padding: 0 1.5rem;
+  }
+
+  .stickyColumn {
+    width: 100%;
+    position: static;
+  }
+
+  .stickyStage {
+    position: sticky;
+    top: 0;
+    height: 35vh;
+    z-index: 20;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(8px);
+  }
+
+  .scrollContent {
+    width: 100%;
+    padding: 0;
+    gap: 15vh; /* Mobile buffer */
+  }
+}

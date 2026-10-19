@@ -37,6 +37,16 @@
   box-sizing: border-box;
 }
 
+.scrollSection {
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
 .textContent {
   flex: var(--flex-text, 1 1 50%);
   max-width: var(--text-max-w, 600px);
@@ -104,6 +114,11 @@
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
+  }
+
+  .scrollSection {
+    min-height: calc(100vh - 40vh - 70px);
+    padding: 3rem 0;
   }
 
   .textContent,

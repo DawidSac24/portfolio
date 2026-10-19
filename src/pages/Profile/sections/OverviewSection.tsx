@@ -3,7 +3,7 @@ import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
 import { ImageExhibit } from "../../../engine/exhibits/image.exhibit";
 import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
 import { Scene } from "../../../engine/scenes/scene";
-import styles from "../../layout/PageLayout.module.css";
+import styles from "../../layouts/PageLayout.module.css";
 
 function OverviewSection() {
   return (
