@@ -1,5 +1,6 @@
 import styles from "../../layouts/PageLayout.module.css";
 import { Card } from "../../../components/ui/Card";
+import { SkillBadges } from "../../../components/ui/SkillBadges";
 
 export const OverviewSection = () => (
   <section id="overview" className={styles.scrollSection}>
@@ -31,6 +32,19 @@ export const OverviewSection = () => (
           missing configuration settings to the web dashboard.
         </p>
       </Card>
+
+      <SkillBadges
+        skills={[
+          "C",
+          "ESP32",
+          "ESP-IDF",
+          "FreeRTOS",
+          "HUB75 LED Matrix",
+          "Spotify API",
+          "OpenWeather API",
+          "HTTP Server",
+        ]}
+      />
     </div>
   </section>
 );

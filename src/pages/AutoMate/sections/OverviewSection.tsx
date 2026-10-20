@@ -1,4 +1,5 @@
 import styles from "../../layouts/PageLayout.module.css";
+import { SkillBadges } from "../../../components/ui/SkillBadges";
 
 export const OverviewSection = () => (
   <section id="overview" className={styles.scrollSection}>
@@ -17,6 +18,19 @@ export const OverviewSection = () => (
           operations, but also supports manual moves detected instantly by a
           grid of magnetic sensors located beneath the surface[cite: 5].
         </p>
+        <SkillBadges
+          skills={[
+            "C++",
+            "Arduino Nano",
+            "KiCad",
+            "PCB Design",
+            "Stepper Motors",
+            "Electromagnet",
+            "Reed Switches",
+            "UART",
+            "Nextion Display",
+          ]}
+        />
       </div>
     </div>
   </section>

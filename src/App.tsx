@@ -6,6 +6,7 @@ import { AppLayout } from "./pages/layouts/AppLayout";
 import { NavProvider } from "./components/Navigation/NavProvider";
 import { AutoMatePage } from "./pages/AutoMate/AutoMatePage";
 import { ResumePage } from "./pages/Resume/ResumePage";
+import MBPlayerPage from "./pages/MBPlayer/MBPlayerPage";
 
 function App() {
   return (
@@ -17,20 +18,7 @@ function App() {
             <Route path="/resume" element={<ResumePage />} />
             <Route path="/smartframe" element={<SmartframePage />} />
 
-            <Route
-              path="/mbplayer"
-              element={
-                <div
-                  style={{
-                    color: "#a1a1aa",
-                    padding: "4rem",
-                    marginLeft: "150px",
-                  }}
-                >
-                  MBPlayer coming soon...
-                </div>
-              }
-            />
+            <Route path="/mbplayer" element={<MBPlayerPage />} />
             <Route path="/automate" element={<AutoMatePage />} />
           </Route>
         </Routes>
