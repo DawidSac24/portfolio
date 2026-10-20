@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useNav } from "../../components/Navigation/nav.context";
 import { StickyScroller } from "../layouts/StickyScroller";
-import { Gallery } from "../../components/ui/Gallery";
 import { OverviewSection } from "./sections/OverviewSection";
 import { HardwareSection } from "./sections/HardwareSection";
 import { FirmwareSection } from "./sections/FirmwareSection";
 import { AnnexesSection } from "./sections/AnnexesSection";
 import { SpecificationsSection } from "./sections/SpecificationsSection";
-import styles from "../layouts/StickyScroller.module.css";
+import { GalleryLayout } from "../../components/ui/GalleryLayout";
 
 export const AutoMatePage = () => {
   const { setNavItems } = useNav();
@@ -28,37 +27,31 @@ export const AutoMatePage = () => {
     <StickyScroller
       stickySide="left"
       stickyContent={
-        <div className={styles.stickyVisualContent}>
-          <Gallery
-            className={styles.stickyGallery}
-            items={[
-              {
-                title: "ChessBoard image",
-                url: "/images/automate.jpg",
-                type: "image",
-              },
-              {
-                title: "AutoMate Action Demo",
-                url: "/videos/automate-demo.mp4",
-                type: "video",
-              },
-              {
-                title: "Schematic without Connectors",
-                url: "/images/automate-schematic.png",
-                type: "image",
-              },
-              {
-                title: "PCB design",
-                url: "/images/automate-pcb.png",
-                type: "image",
-              },
-            ]}
-          />
-          <p className={styles.stickyVisualNote}>
-            [Note: there should be a 3d model instead, but it isn't finished
-            yet]
-          </p>
-        </div>
+        <GalleryLayout
+          items={[
+            {
+              title: "ChessBoard image",
+              url: "/images/automate.jpg",
+              type: "image",
+            },
+            {
+              title: "AutoMate Action Demo",
+              url: "/videos/automate-demo.mp4",
+              type: "video",
+            },
+            {
+              title: "Schematic without Connectors",
+              url: "/images/automate-schematic.png",
+              type: "image",
+            },
+            {
+              title: "PCB design",
+              url: "/images/automate-pcb.png",
+              type: "image",
+            },
+          ]}
+          note="[Note: there should be a 3d model instead, but it isn't finished yet]"
+        />
       }
     >
       <OverviewSection />

@@ -4,7 +4,9 @@ import styles from "./Navigation.module.css";
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.headerLogo}>Dawid Sac</div>
+      <div className={`${styles.headerLogo} ${styles.headerTitle}`}>
+        Dawid Sac
+      </div>
       <div className={`${styles.headerLogo} ${styles.headerStatus}`}>
         [Work in progress...]
       </div>

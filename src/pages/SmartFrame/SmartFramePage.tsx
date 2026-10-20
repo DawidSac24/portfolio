@@ -9,8 +9,7 @@ import { FirmwareSection } from "./sections/FirmwareSection";
 import { DifficultiesSection } from "./sections/DifficultiesSection";
 import { FutureSection } from "./sections/FutureSection";
 import { AnnexesSection } from "./sections/AnnexesSection";
-import { Gallery } from "../../components/ui/Gallery";
-import styles from "../layouts/StickyScroller.module.css";
+import { GalleryLayout } from "../../components/ui/GalleryLayout";
 
 export const SmartframePage = () => {
   const { setNavItems } = useNav();
@@ -31,27 +30,21 @@ export const SmartframePage = () => {
     <StickyScroller
       stickySide="left"
       stickyContent={
-        <div className={styles.stickyVisualContent}>
-          <Gallery
-            className={styles.stickyGallery}
-            items={[
-              {
-                url: "/videos/smartframe_test.mp4",
-                title: "Spotify API Integration Demo",
-                type: "video",
-              },
-              {
-                url: "/images/weather_screen.jpg",
-                title: "Weather API Screen",
-                type: "image",
-              },
-            ]}
-          />
-          <p className={styles.stickyVisualNote}>
-            [Note: there should be a 3d model instead, but it isn't finished
-            yet]
-          </p>
-        </div>
+        <GalleryLayout
+          items={[
+            {
+              url: "/videos/smartframe_test.mp4",
+              title: "Spotify API Integration Demo",
+              type: "video",
+            },
+            {
+              url: "/images/weather_screen.jpg",
+              title: "Weather API Screen",
+              type: "image",
+            },
+          ]}
+          note="[Note: there should be a 3d model instead, but it isn't finished yet]"
+        />
       }
     >
       <OverviewSection />

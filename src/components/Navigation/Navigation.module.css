@@ -149,7 +149,13 @@
     display: none;
   }
 
+  .headerTitle {
+    order: 1;
+    margin-left: 0;
+  }
+
   .tabsList {
+    order: 2;
     flex: 1;
     min-width: 0;
     justify-content: flex-end;
