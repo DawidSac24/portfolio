@@ -11,7 +11,7 @@ import uiStyles from "../../../components/ui/ui.module.css";
 
 function OverviewSection() {
   const [portraitWidth, setPortraitWidth] = useState(() =>
-    window.matchMedia("(max-width: 768px)").matches ? 10 : 8,
+    window.matchMedia("(max-width: 768px)").matches ? 6 : 8,
   );
   const [asciiCharSize, setAsciiCharSize] = useState(() =>
     window.matchMedia("(max-width: 768px)").matches ? 3 : 6,

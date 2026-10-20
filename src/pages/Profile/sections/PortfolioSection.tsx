@@ -18,7 +18,7 @@ function PortfolioSection() {
   useEffect(() => {
     const mobileViewport = window.matchMedia("(max-width: 768px)");
     const updateSaturnSize = (event: MediaQueryListEvent) => {
-      setSaturnSize(event.matches ? 5 : 7);
+      setSaturnSize(event.matches ? 6 : 7);
       setAsciiCharSize(event.matches ? 3 : 6);
     };
 
