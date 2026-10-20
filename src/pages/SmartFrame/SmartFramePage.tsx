@@ -10,6 +10,7 @@ import { DifficultiesSection } from "./sections/DifficultiesSection";
 import { FutureSection } from "./sections/FutureSection";
 import { AnnexesSection } from "./sections/AnnexesSection";
 import { Gallery } from "../../components/ui/Gallery";
+import styles from "../layouts/StickyScroller.module.css";
 
 export const SmartframePage = () => {
   const { setNavItems } = useNav();
@@ -30,15 +31,9 @@ export const SmartframePage = () => {
     <StickyScroller
       stickySide="left"
       stickyContent={
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
+        <div className={styles.stickyVisualContent}>
           <Gallery
+            className={styles.stickyGallery}
             items={[
               {
                 url: "/videos/smartframe_test.mp4",
@@ -52,7 +47,10 @@ export const SmartframePage = () => {
               },
             ]}
           />
-          [Note: there should be a 3d model instead, but it isn't finished yet]
+          <p className={styles.stickyVisualNote}>
+            [Note: there should be a 3d model instead, but it isn't finished
+            yet]
+          </p>
         </div>
       }
     >

@@ -36,6 +36,20 @@
   justify-content: center;
 }
 
+.stickyVisualContent {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stickyVisualNote {
+  color: var(--tui-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
 .scrollContent {
   flex: 1 1 0;
   min-width: 0;
@@ -60,24 +74,44 @@
   .stickyColumn {
     width: 100%;
     position: static;
-    height: calc(27% - 0.375rem);
-    flex: 0 0 calc(27% - 0.375rem);
+    height: calc(35% - 0.375rem);
+    flex: 0 0 calc(35% - 0.375rem);
   }
 
   .stickyStage {
     position: static;
     height: 100%;
     z-index: 20;
+    align-items: flex-start;
     overflow: hidden;
+    padding-top: 0.5rem;
     background: rgba(5, 5, 5, 0.85);
     backdrop-filter: blur(8px);
   }
 
+  .stickyVisualContent {
+    height: 100%;
+    min-height: 0;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+
+  .stickyGallery {
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .stickyVisualNote {
+    display: none;
+  }
+
   .scrollContent {
     width: 100%;
-    height: calc(73% - 0.375rem);
+    height: calc(65% - 0.375rem);
     min-height: 0;
-    flex: 0 0 calc(73% - 0.375rem);
+    flex: 0 0 calc(65% - 0.375rem);
     overflow-y: auto;
     overscroll-behavior-y: contain;
     scroll-snap-type: y mandatory;
@@ -92,12 +126,12 @@
   }
 
   .stickyColumn {
-    height: calc(24% - 0.375rem);
-    flex-basis: calc(24% - 0.375rem);
+    height: calc(40% - 0.375rem);
+    flex-basis: calc(40% - 0.375rem);
   }
 
   .scrollContent {
-    height: calc(76% - 0.375rem);
-    flex-basis: calc(76% - 0.375rem);
+    height: calc(60% - 0.375rem);
+    flex-basis: calc(60% - 0.375rem);
   }
 }

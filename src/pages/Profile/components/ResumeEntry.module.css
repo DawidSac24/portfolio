@@ -49,7 +49,7 @@
   }
 
   .resumeTitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .resumeDate,
@@ -58,13 +58,13 @@
   }
 
   .resumeSubtitle {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.5;
   }
 
   .resumeDetails {
     margin-top: 0.65rem;
-    font-size: 0.82rem;
-    line-height: 1.55;
+    font-size: 0.78rem;
+    line-height: 1.5;
   }
 }

@@ -7,6 +7,7 @@ import { HardwareSection } from "./sections/HardwareSection";
 import { FirmwareSection } from "./sections/FirmwareSection";
 import { AnnexesSection } from "./sections/AnnexesSection";
 import { SpecificationsSection } from "./sections/SpecificationsSection";
+import styles from "../layouts/StickyScroller.module.css";
 
 export const AutoMatePage = () => {
   const { setNavItems } = useNav();
@@ -27,15 +28,9 @@ export const AutoMatePage = () => {
     <StickyScroller
       stickySide="left"
       stickyContent={
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
+        <div className={styles.stickyVisualContent}>
           <Gallery
+            className={styles.stickyGallery}
             items={[
               {
                 title: "ChessBoard image",
@@ -59,7 +54,10 @@ export const AutoMatePage = () => {
               },
             ]}
           />
-          [Note: there should be a 3d model instead, but it isn't finished yet]
+          <p className={styles.stickyVisualNote}>
+            [Note: there should be a 3d model instead, but it isn't finished
+            yet]
+          </p>
         </div>
       }
     >

@@ -9,9 +9,10 @@ export interface GalleryItem {
 
 interface GalleryProps {
   items: GalleryItem[];
+  className?: string;
 }
 
-export const Gallery = ({ items }: GalleryProps) => {
+export const Gallery = ({ items, className }: GalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!items || items.length === 0) return null;
@@ -23,7 +24,7 @@ export const Gallery = ({ items }: GalleryProps) => {
     setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
 
   return (
-    <div className={styles.galleryContainer}>
+    <div className={`${styles.galleryContainer} ${className ?? ""}`}>
       {/*  Top Header with Title */}
       <div className={styles.galleryHeader}>
         <span>[FILE] {currentItem.title}</span>

@@ -65,6 +65,7 @@
 
 @media (max-width: 868px) {
   .galleryContainer {
+    height: 100%;
     max-height: 100%;
   }
 
