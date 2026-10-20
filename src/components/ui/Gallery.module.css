@@ -71,8 +71,8 @@
   .galleryHeader {
     min-width: 0;
     gap: 0.5rem;
-    padding: 0.35rem 0.5rem;
-    font-size: 0.7rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.72rem;
   }
 
   .galleryHeader span {
@@ -91,7 +91,7 @@
   }
 
   .galleryControls {
-    padding: 0.35rem 0.5rem;
-    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.78rem;
   }
 }

@@ -118,13 +118,13 @@
   .snapSection {
     height: auto;
     min-height: calc(100vh - var(--header-height));
-    padding: 1.5rem 1rem;
+    padding: 2rem 1.25rem;
   }
 
   .sectionFlex {
     flex-direction: column;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .textContent,
@@ -139,12 +139,29 @@
   }
 
   .viewportWrapper {
-    height: clamp(180px, 30vh, 260px);
+    height: clamp(320px, 38vh, 420px);
+    min-height: 320px;
   }
 
   .singleColContainer {
     max-width: 100%;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
+    gap: 1.5rem;
+  }
+
+  .textContent,
+  .textContentWide {
+    gap: 1rem;
+  }
+
+  .sectionHeading {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .bioText {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 }
 
@@ -152,7 +169,7 @@
   .scrollSection {
     height: calc(70vh - var(--header-height) * 0.7);
     min-height: 18rem;
-    padding: 1.25rem 0.5rem;
+    padding: 1.5rem 0.75rem;
     scroll-snap-align: start;
   }
 
@@ -162,5 +179,19 @@
 
   .scrollSection .textContent {
     max-width: 100%;
+  }
+
+  .scrollSection .textContent {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .snapSection {
+    padding: 1.5rem 1rem;
+  }
+
+  .bioText {
+    font-size: 0.95rem;
   }
 }

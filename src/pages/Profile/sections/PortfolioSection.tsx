@@ -1,4 +1,5 @@
 // PortfolioSection.tsx
+import { useEffect, useState } from "react";
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
 import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
 import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
@@ -7,6 +8,26 @@ import { SaturnModel } from "../../../engine/exhibits/profile/saturn.exhibit";
 import styles from "../../layouts/PageLayout.module.css";
 
 function PortfolioSection() {
+  const [saturnSize, setSaturnSize] = useState(() =>
+    window.matchMedia("(max-width: 768px)").matches ? 5 : 7,
+  );
+  const [asciiCharSize, setAsciiCharSize] = useState(() =>
+    window.matchMedia("(max-width: 768px)").matches ? 3 : 6,
+  );
+
+  useEffect(() => {
+    const mobileViewport = window.matchMedia("(max-width: 768px)");
+    const updateSaturnSize = (event: MediaQueryListEvent) => {
+      setSaturnSize(event.matches ? 5 : 7);
+      setAsciiCharSize(event.matches ? 3 : 6);
+    };
+
+    mobileViewport.addEventListener("change", updateSaturnSize);
+    return () => {
+      mobileViewport.removeEventListener("change", updateSaturnSize);
+    };
+  }, []);
+
   return (
     <section id="portfolio" className={styles.snapSection}>
       <div
@@ -23,17 +44,17 @@ function PortfolioSection() {
       >
         <div className={styles.viewportWrapper}>
           <Viewport3D
-            sceneId="profile-saturn"
+            sceneId={`profile-saturn-${saturnSize}-${asciiCharSize}`}
             buildFn={async () => {
               const saturn = await new ExhibitBuilder(
                 "/models/imports/saturn_-_ringed_planet/scene.gltf",
                 SaturnModel,
-                7,
+                saturnSize,
               ).build();
 
               const scene = new Scene().addExhibit(saturn).addEffect(
                 new ColoredAsciiEffect({
-                  charSize: 6.0,
+                  charSize: asciiCharSize,
                   hoverRadius: 0.2,
                 }),
               );

@@ -7,7 +7,7 @@ export class SaturnModel extends Exhibit {
   public constructor(
     sourceUrl: string,
     rawAsset: unknown,
-    desiredSize: number = 4,
+    desiredSize: number = 5,
   ) {
     const saturnMesh = ((rawAsset as { scene?: THREE.Object3D }).scene ||
       rawAsset) as THREE.Object3D;
@@ -40,10 +40,10 @@ export class SaturnModel extends Exhibit {
 
     this.group.add(saturnMesh);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.45);
     keyLight.position.set(5, 8, 5);
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.5);
     fillLight.position.set(-5, -6, 3);
 
     this.group.add(ambientLight, keyLight, fillLight);

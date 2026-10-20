@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { LinkBadge } from "../../../components/ui/Badge";
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
 import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
@@ -9,6 +10,26 @@ import styles from "../../layouts/PageLayout.module.css";
 import uiStyles from "../../../components/ui/ui.module.css";
 
 function OverviewSection() {
+  const [portraitWidth, setPortraitWidth] = useState(() =>
+    window.matchMedia("(max-width: 768px)").matches ? 10 : 8,
+  );
+  const [asciiCharSize, setAsciiCharSize] = useState(() =>
+    window.matchMedia("(max-width: 768px)").matches ? 3 : 6,
+  );
+
+  useEffect(() => {
+    const mobileViewport = window.matchMedia("(max-width: 768px)");
+    const updatePortraitWidth = (event: MediaQueryListEvent) => {
+      setPortraitWidth(event.matches ? 5.5 : 8);
+      setAsciiCharSize(event.matches ? 3 : 6);
+    };
+
+    mobileViewport.addEventListener("change", updatePortraitWidth);
+    return () => {
+      mobileViewport.removeEventListener("change", updatePortraitWidth);
+    };
+  }, []);
+
   return (
     <section id="overview" className={styles.snapSection}>
       <div
@@ -57,9 +78,9 @@ function OverviewSection() {
 
         <div className={styles.viewportWrapper}>
           <Viewport3D
-            sceneId="profile-portrait"
+            sceneId={`profile-portrait-${portraitWidth}-${asciiCharSize}`}
             buildFn={async () => {
-              const width = 8;
+              const width = portraitWidth;
               const height = width * 1.28536880290206;
               const profilePic = await new ExhibitBuilder(
                 "/profile-no-bg.png",
@@ -69,7 +90,7 @@ function OverviewSection() {
 
               return new Scene().addExhibit(profilePic).addEffect(
                 new ColoredAsciiEffect({
-                  charSize: 6.0,
+                  charSize: asciiCharSize,
                   hoverRadius: 0.2,
                 }),
               );

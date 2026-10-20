@@ -40,3 +40,31 @@
   padding-left: 1.1rem;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .resumeRow {
+    flex-wrap: wrap;
+    gap: 0.2rem 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .resumeTitle {
+    font-size: 0.95rem;
+  }
+
+  .resumeDate,
+  .resumeLocation {
+    font-size: 0.78rem;
+  }
+
+  .resumeSubtitle {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .resumeDetails {
+    margin-top: 0.65rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+}

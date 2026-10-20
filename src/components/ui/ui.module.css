@@ -82,3 +82,13 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+  .Body {
+    padding: 1rem;
+  }
+
+  .Card {
+    margin-bottom: 1.5rem;
+  }
+}
