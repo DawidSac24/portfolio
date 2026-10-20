@@ -72,7 +72,7 @@ export class AssetManager {
   }
 
   public release(url: string): void {
-    this.cache.retain(url);
+    this.cache.release(url);
   }
 
   private disposeThreeAsset(asset: unknown): void {
