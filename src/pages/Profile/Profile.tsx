@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNav } from "../../components/Navigation/nav.context";
 import { SnapScroller } from "../layouts/SnapScroller";
 import OverviewSection from "./sections/OverviewSection";
+import MyProjectsSection from "./sections/MyProjectsSection";
 import PortfolioSection from "./sections/PortfolioSection";
 import EducationSection from "./sections/EducationSection";
 import ExperienceSection from "./sections/ExpirienceSection";
@@ -13,6 +14,7 @@ export const Profile = () => {
   useEffect(() => {
     setNavItems([
       { id: "overview", label: "About Me" },
+      { id: "projects", label: "My Projects" },
       { id: "portfolio", label: "About This Portfolio" },
       { id: "education", label: "Educational Background" },
       { id: "experience", label: "Work Experience" },
@@ -24,6 +26,7 @@ export const Profile = () => {
   return (
     <SnapScroller>
       <OverviewSection />
+      <MyProjectsSection />
       <PortfolioSection />
       <EducationSection />
       <ExperienceSection />

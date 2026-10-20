@@ -1,10 +1,12 @@
-import { Badge } from "../../../components/ui/Badge";
+import { LinkBadge } from "../../../components/ui/Badge";
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
 import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
 import { ImageExhibit } from "../../../engine/exhibits/image.exhibit";
 import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
 import { Scene } from "../../../engine/scenes/scene";
+import { BriefcaseBusiness, CodeXml, FileText } from "lucide-react";
 import styles from "../../layouts/PageLayout.module.css";
+import uiStyles from "../../../components/ui/ui.module.css";
 
 function OverviewSection() {
   return (
@@ -36,7 +38,21 @@ function OverviewSection() {
             using my mistakes as stepping stones to improve.
           </p>
 
-          <Badge name="My Resume" />
+          <div className={uiStyles.badgeGroup}>
+            <LinkBadge name="My Resume" href="/resume" icon={FileText} />
+            <LinkBadge
+              name="GitHub"
+              href="https://github.com/DawidSac24"
+              icon={CodeXml}
+              external
+            />
+            <LinkBadge
+              name="LinkedIn"
+              href="https://www.linkedin.com/in/dawid-sac/"
+              icon={BriefcaseBusiness}
+              external
+            />
+          </div>
         </div>
 
         <div className={styles.viewportWrapper}>

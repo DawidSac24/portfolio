@@ -5,6 +5,7 @@ import { SmartframePage } from "./pages/SmartFrame/SmartFramePage";
 import { AppLayout } from "./pages/layouts/AppLayout";
 import { NavProvider } from "./components/Navigation/NavProvider";
 import { AutoMatePage } from "./pages/AutoMate/AutoMatePage";
+import { ResumePage } from "./pages/Resume/ResumePage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/" element={<Profile />} />
+            <Route path="/resume" element={<ResumePage />} />
             <Route path="/smartframe" element={<SmartframePage />} />
 
             <Route
