@@ -5,8 +5,10 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>Dawid Sac</div>
-      <div className={styles.headerLogo}>[Work in progress...]</div>
-      <nav className={styles.tabsList}>
+      <div className={`${styles.headerLogo} ${styles.headerStatus}`}>
+        [Work in progress...]
+      </div>
+      <nav className={styles.tabsList} aria-label="Main navigation">
         <NavLink
           to="/"
           end
@@ -18,9 +20,6 @@ export const Header = () => {
         >
           Profile
         </NavLink>
-
-        <span className={styles.separator}>my main projects |</span>
-
         <NavLink
           to="/smartframe"
           className={({ isActive }) =>
@@ -31,7 +30,6 @@ export const Header = () => {
         >
           Smartframe
         </NavLink>
-
         <NavLink
           to="/automate"
           className={({ isActive }) =>
@@ -42,7 +40,6 @@ export const Header = () => {
         >
           Automate
         </NavLink>
-
         <NavLink
           to="/mbplayer"
           className={({ isActive }) =>

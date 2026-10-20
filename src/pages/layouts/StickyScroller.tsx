@@ -1,4 +1,5 @@
 import React from "react";
+import { SnapScroller } from "./SnapScroller";
 import styles from "./StickyScroller.module.css";
 
 interface StickyScrollerProps {
@@ -14,7 +15,7 @@ export const StickyScroller = ({
   stickyContent,
   children,
   stickySide = "left",
-  maxContentWidth = "1400px",
+  maxContentWidth = "1600px",
   className,
   style,
 }: StickyScrollerProps) => {
@@ -35,7 +36,9 @@ export const StickyScroller = ({
         </aside>
 
         {/* Scrolling Narrative Content */}
-        <main className={styles.scrollContent}>{children}</main>
+        <main className={styles.scrollContent}>
+          <SnapScroller embedded>{children}</SnapScroller>
+        </main>
       </div>
     </div>
   );

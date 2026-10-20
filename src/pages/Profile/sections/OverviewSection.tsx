@@ -1,3 +1,4 @@
+import { Badge } from "../../../components/ui/Badge";
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
 import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
 import { ImageExhibit } from "../../../engine/exhibits/image.exhibit";
@@ -34,6 +35,8 @@ function OverviewSection() {
             complex personal projects, constantly exploring new technologies and
             using my mistakes as stepping stones to improve.
           </p>
+
+          <Badge name="My Resume" />
         </div>
 
         <div className={styles.viewportWrapper}>

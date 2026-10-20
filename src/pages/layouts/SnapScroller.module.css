@@ -1,9 +1,16 @@
 .scrollerViewport {
   position: relative;
   width: 100vw;
-  margin-top: 70px;
-  height: calc(100vh - 70px);
+  margin-top: var(--header-height);
+  height: calc(100vh - var(--header-height));
   overflow: hidden;
+}
+
+.embeddedViewport {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
 }
 
 .snapContainer {
@@ -13,4 +20,17 @@
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scroll-padding-top: 0;
+}
+
+.embeddedViewport .snapContainer {
+  height: auto;
+  overflow: visible;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+@media (max-width: 868px) {
+  .embeddedViewport .snapContainer {
+    width: 100%;
+  }
 }

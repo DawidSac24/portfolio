@@ -11,6 +11,7 @@ export interface NavItem {
 export const SideNav = () => {
   const { navItems } = useNav();
   const [activeId, setActiveId] = useState<string>("");
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (navItems.length === 0) return;
@@ -21,6 +22,17 @@ export const SideNav = () => {
 
     if (sectionElements.length === 0) return;
 
+    let scrollRoot: HTMLElement | null = null;
+    let parent = sectionElements[0].parentElement;
+    while (parent) {
+      const overflowY = window.getComputedStyle(parent).overflowY;
+      if (overflowY === "auto" || overflowY === "scroll") {
+        scrollRoot = parent;
+        break;
+      }
+      parent = parent.parentElement;
+    }
+
     const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -30,7 +42,7 @@ export const SideNav = () => {
     };
 
     const observerOptions: IntersectionObserverInit = {
-      root: null,
+      root: scrollRoot,
       rootMargin: "-40% 0px -40% 0px",
       threshold: 0,
     };
@@ -59,6 +71,7 @@ export const SideNav = () => {
   ) => {
     e.preventDefault(); // Stop the native top-jump
     const targetElement = document.getElementById(id);
+    setIsOpen(false);
 
     if (targetElement) {
       targetElement.scrollIntoView({
@@ -72,8 +85,18 @@ export const SideNav = () => {
   };
 
   return (
-    <nav className={styles.sideNav}>
-      <ul className={styles.navList}>
+    <nav className={`${styles.sideNav} ${isOpen ? styles.sideNavOpen : ""}`}>
+      <button
+        type="button"
+        className={styles.mobileNavToggle}
+        aria-expanded={isOpen}
+        aria-controls="section-navigation"
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        <span>{navItems.find((item) => item.id === currentActiveId)?.label}</span>
+        <span aria-hidden="true">{isOpen ? "[-]" : "[+]"} SECTIONS</span>
+      </button>
+      <ul className={styles.navList} id="section-navigation">
         {navItems.map((item) => {
           const isActive = currentActiveId === item.id;
           return (

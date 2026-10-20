@@ -1,16 +1,19 @@
 .scrollViewport {
   position: relative;
   width: 100vw;
-  margin-top: 70px;
-  height: calc(100vh - 70px);
-  overflow-y: auto;
+  margin-top: var(--header-height);
+  height: calc(100vh - var(--header-height));
   overflow-x: hidden;
+  overflow-y: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 .container {
   display: flex;
-  max-width: var(--max-content-w, 1400px);
+  gap: 6rem;
+  min-height: 100%;
+  max-width: var(--max-content-w, 1600px);
   margin: 0 auto;
   padding: 0 2rem;
   box-sizing: border-box;
@@ -18,15 +21,15 @@
 }
 
 .stickyColumn {
-  flex: 1 1 50%;
+  flex: 1 1 0;
   min-width: 0;
   position: relative;
 }
 
 .stickyStage {
   position: sticky;
-  top: 2rem;
-  height: calc(100vh - 110px);
+  top: 0;
+  height: calc(100vh - var(--header-height));
   width: 100%;
   display: flex;
   align-items: center;
@@ -34,38 +37,50 @@
 }
 
 .scrollContent {
-  flex: 1 1 50%;
+  flex: 1 1 0;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 10vh 0 10rem 3rem;
-  gap: 25vh; /* RESTORED: Adds a guaranteed breathing space between sections */
-  box-sizing: border-box;
+  min-height: 100%;
 }
 
 @media (max-width: 868px) {
+  .scrollViewport {
+    height: calc(100vh - var(--header-height));
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+
   .container {
     flex-direction: column !important;
-    padding: 0 1.5rem;
+    gap: 0;
+    height: 100%;
+    min-height: 100%;
+    padding: 0 1rem;
   }
 
   .stickyColumn {
     width: 100%;
     position: static;
+    height: 30%;
+    flex: 0 0 30%;
   }
 
   .stickyStage {
-    position: sticky;
-    top: 0;
-    height: 35vh;
+    position: static;
+    height: 100%;
     z-index: 20;
+    overflow: hidden;
     background: rgba(5, 5, 5, 0.85);
     backdrop-filter: blur(8px);
   }
 
   .scrollContent {
     width: 100%;
-    padding: 0;
-    gap: 15vh; /* Mobile buffer */
+    height: 70%;
+    min-height: 0;
+    flex: 0 0 70%;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
   }
 }

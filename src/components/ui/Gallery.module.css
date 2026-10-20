@@ -62,3 +62,36 @@
 .indicator {
   font-size: 0.85rem;
 }
+
+@media (max-width: 868px) {
+  .galleryContainer {
+    max-height: 100%;
+  }
+
+  .galleryHeader {
+    min-width: 0;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .galleryHeader span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mediaWrapper {
+    min-height: 0;
+    flex: 1;
+  }
+
+  .mediaElement {
+    max-height: 22vh;
+  }
+
+  .galleryControls {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}

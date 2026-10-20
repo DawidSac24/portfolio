@@ -7,6 +7,11 @@
   --tui-muted: #52525b;
   --tui-accent: #f59e0b;
   --tui-border: #3f3f46;
+  --header-height: 4.375rem;
+}
+
+html {
+  font-size: clamp(14px, 0.625vw, 16px);
 }
 
 * {
@@ -58,4 +63,10 @@ a {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
