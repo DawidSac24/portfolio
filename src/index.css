@@ -49,6 +49,18 @@ a {
   scrollbar-width: thin; /* Makes it blocky and sharp instead of the thick default */
 }
 
+@media (min-width: 769px) and (max-width: 1200px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  html {
+    font-size: 12.5px;
+  }
+}
+
 /* 2. CHROME / EDGE / SAFARI SUPPORT */
 ::-webkit-scrollbar {
   width: 12px;

@@ -114,6 +114,72 @@
   font-size: 1.05rem;
 }
 
+@media (min-width: 769px) and (max-width: 1200px) {
+  .snapSection {
+    padding: 1.5rem 2rem;
+  }
+
+  .sectionFlex {
+    gap: 2rem;
+  }
+
+  .singleColContainer {
+    gap: 1rem;
+  }
+
+  .textContent,
+  .textContentWide {
+    gap: 0.9rem;
+  }
+
+  .sectionHeading {
+    font-size: 1.3rem;
+  }
+
+  .bioText {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .viewportWrapper {
+    height: min(var(--view-h, 550px), 55vh);
+    max-height: 480px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  .snapSection {
+    padding: 1rem 1.5rem;
+  }
+
+  .sectionFlex {
+    gap: 1.25rem;
+  }
+
+  .singleColContainer {
+    gap: 0.75rem;
+  }
+
+  .textContent,
+  .textContentWide {
+    gap: 0.75rem;
+  }
+
+  .sectionHeading {
+    font-size: 1.2rem;
+  }
+
+  .bioText {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .viewportWrapper {
+    height: min(var(--view-h, 550px), 45vh);
+    max-height: 400px;
+  }
+}
+
 @media (max-width: 768px) {
   .snapSection {
     height: auto;

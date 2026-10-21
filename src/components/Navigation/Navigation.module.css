@@ -135,6 +135,61 @@
   color: var(--tui-accent, #8bac0f) !important;
 }
 
+@media (min-width: 769px) and (max-width: 1200px) {
+  .sideNav {
+    right: 1rem;
+    bottom: 1rem;
+    width: fit-content;
+    max-width: min(18rem, calc(100vw - 2rem));
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--tui-accent);
+    background: rgba(5, 5, 5, 0.96);
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+  }
+
+  .mobileNavToggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border: 0;
+    background: transparent;
+    color: var(--tui-text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .mobileNavToggle span:first-child {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--tui-accent);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobileNavToggle span:last-child {
+    flex: 0 0 auto;
+    color: var(--tui-muted);
+    font-size: 0.8rem;
+  }
+
+  .navList {
+    display: none;
+  }
+
+  .sideNavOpen .navList {
+    display: flex;
+    max-height: min(45vh, 20rem);
+    overflow-y: auto;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--tui-border);
+  }
+}
+
 @media (max-width: 768px) {
   :global(:root) {
     --header-height: 3.5rem;

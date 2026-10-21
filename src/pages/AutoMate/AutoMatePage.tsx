@@ -31,22 +31,22 @@ export const AutoMatePage = () => {
           items={[
             {
               title: "ChessBoard image",
-              url: "/images/automate.jpg",
+              url: "/automate/automate.jpg",
               type: "image",
             },
             {
               title: "AutoMate Action Demo",
-              url: "/videos/automate-demo.mp4",
+              url: "/automate/automate-demo.mp4",
               type: "video",
             },
             {
               title: "Schematic without Connectors",
-              url: "/images/automate-schematic.png",
+              url: "/automate/automate-schematic.png",
               type: "image",
             },
             {
               title: "PCB design",
-              url: "/images/automate-pcb.png",
+              url: "/automate/automate-pcb.png",
               type: "image",
             },
           ]}

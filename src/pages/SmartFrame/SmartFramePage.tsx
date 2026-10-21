@@ -33,13 +33,38 @@ export const SmartframePage = () => {
         <GalleryLayout
           items={[
             {
-              url: "/videos/smartframe_test.mp4",
-              title: "Spotify API Integration Demo",
+              url: "/smartframe/normal_behavior.mp4",
+              title: "Default frame behavior",
               type: "video",
             },
             {
-              url: "/images/weather_screen.jpg",
+              url: "/smartframe/spotify-transition1.mp4",
+              title: "Spotify API Integration Demo 1",
+              type: "video",
+            },
+            {
+              url: "/smartframe/spotify-transition2.mp4",
+              title: "Spotify API Integration Demo 2",
+              type: "video",
+            },
+            {
+              url: "/smartframe/clock_screen.jpg",
+              title: "Clock Screen with a different theme",
+              type: "image",
+            },
+            {
+              url: "/smartframe/weather_screen.jpg",
               title: "Weather API Screen",
+              type: "image",
+            },
+            {
+              url: "/smartframe/custom_img1.jpg",
+              title: "Custom image upload 1",
+              type: "image",
+            },
+            {
+              url: "/smartframe/custom_img2.jpg",
+              title: "Custom image upload 2",
               type: "image",
             },
           ]}

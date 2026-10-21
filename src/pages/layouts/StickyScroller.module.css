@@ -42,6 +42,20 @@
   min-height: 100%;
 }
 
+@media (min-width: 869px) and (max-width: 1200px) {
+  .container {
+    gap: 3rem;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 869px) and (max-width: 1000px) {
+  .container {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
 @media (max-width: 868px) {
   .scrollViewport {
     height: calc(100vh - var(--header-height));
