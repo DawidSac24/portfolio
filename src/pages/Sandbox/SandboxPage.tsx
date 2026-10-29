@@ -1,9 +1,6 @@
 // // SandboxPage.tsx
 // import { Viewport3D } from "../../components/ui/ViewPort3D";
-// import { ExhibitBuilder } from "../../engine/builders/exhibit.builder";
-// import { SaturnModel } from "../../engine/exhibits/saturn.exhibit";
-// import { ColoredAsciiEffect } from "../../engine/modifiers/passes/ascii.effect";
-// import { Scene } from "../../engine/scenes/scene";
+// import { ColoredAsciiEffect, ExhibitBuilder, SaturnModel, Scene } from "../../engine/src";
 
 export default function SandboxPage() {
   return (

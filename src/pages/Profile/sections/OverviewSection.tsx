@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { LinkBadge } from "../../../components/ui/Badge";
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
-import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
-import { ImageExhibit } from "../../../engine/exhibits/image.exhibit";
-import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
-import { Scene } from "../../../engine/scenes/scene";
+import {
+  ColoredAsciiEffect,
+  ExhibitBuilder,
+  ImageExhibit,
+  Scene,
+} from "../../../engine/src";
 import { BriefcaseBusiness, CodeXml, FileText } from "lucide-react";
 import styles from "../../layouts/PageLayout.module.css";
 import uiStyles from "../../../components/ui/ui.module.css";

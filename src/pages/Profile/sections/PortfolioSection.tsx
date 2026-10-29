@@ -1,10 +1,12 @@
 // PortfolioSection.tsx
 import { useEffect, useState } from "react";
 import { Viewport3D } from "../../../components/ui/ViewPort3D";
-import { ExhibitBuilder } from "../../../engine/builders/exhibit.builder";
-import { ColoredAsciiEffect } from "../../../engine/modifiers/passes/ascii.effect";
-import { Scene } from "../../../engine/scenes/scene";
-import { SaturnModel } from "../../../engine/exhibits/profile/saturn.exhibit";
+import {
+  ColoredAsciiEffect,
+  ExhibitBuilder,
+  SaturnModel,
+  Scene,
+} from "../../../engine/src";
 import styles from "../../layouts/PageLayout.module.css";
 
 function PortfolioSection() {

@@ -3,8 +3,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-import { SceneManager } from "../../engine/core/scene.manager";
-import type { Scene } from "../../engine/scenes/scene";
+import { SceneManager, type Scene } from "../../engine/src";
 
 interface Viewport3DProps {
   sceneId: string;
